@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <title>Document</title>
+    <script>
+        var car=new Array("Fortuner","BMW","Swift");
+        document.write(car+"<br>")
+
+        function display()
+        {
+            car.push("Scoda","Celerio");
+            document.write(car);
+            car.pop();
+            document.write("<br>");
+            document.write(car);
+        }
+    </script>
+</head>
+<body>
+    <button onclick=display()>Click</button>
+</body>
+</html>
