@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <script>
+    function display()
+    {
+            var username=document.getElementById("username").value;
+            var password=document.getElementById("password").value;
+            if(username=="mansi" && password=="mansi@123")
+            {
+                document.write("<a href=loginform.html>Visit To Form</a>");
+            }
+            else
+            {
+                document.write("Incorrect username and password<br>Please Try Again");
+            }
+    }
+    </script>
+</head>
+<body>
+            <h2>Student Membership Form</h2>
+            <form>
+                        User Name: <input type="text" id="username" name="username"><br><br>
+                        Password: <input type="password" id="password" name="password"><br><br>
+                        <input type="button" value="Login" onclick="display()">
+            </form>
+            <b>Note:Username and password demo<br>username:mansi<br>password:mansi@123</b>
+</body>
+</html>
+
+
+

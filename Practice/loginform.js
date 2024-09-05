@@ -13,3 +13,4 @@ function Submit()
         console.log("Password: " + password);
     }
 }
+
