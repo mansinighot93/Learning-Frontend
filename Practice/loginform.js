@@ -14,21 +14,27 @@
     }
 }
 */
-var loginform=[];
-var count=loginform.length;
-const onInsertButtonClick=()=>{
-    var txtUsername=document.getElementById("username");
-    var Username=txtUsername.value ;
+var loginform = [];
 
-    var txtPassword=document.getElementById("password");
-    var Password=txtPassword.value ;
+const onInsertButtonClick = () => {
+    var txtUsername = document.getElementById("username");
+    var Username = txtUsername.value;
+
+    var txtPassword = document.getElementById("password");
+    var Password = txtPassword.value;
+
+    if (Username && Password)
+    {
+        var Login = {
+            id: loginform.length + 1,
+            Username: Username,
+            Password: Password
+        };
+
+        loginform.push(Login);
+        console.log(loginform);
+    } 
+    else {
+        console.log("Both fields are required.");
+    }
 };
-
-var Login={
-    id:loginform.length+1,
-    Username:username,
-    Password:password
-}
-
-loginform.push(Login);
-console.log(loginform);
