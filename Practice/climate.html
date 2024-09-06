@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Climate Reading</title>
+    </head>
+    <body>
+        <table border="3">
+            <tr>
+                <td>
+                    <lable>Temprature: </lable>
+                </td>
+                <td>
+                    <input type="number" id="temprature" name="temprature" value=""/>
+                </td>
+            </tr>
+ 
+            <tr>
+                <td>
+                    <lable>Humadity: </lable>
+                </td>
+                <td>
+                    <input type="number" id="humadity" name="humadity" value=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <lable>CO2 Level: </lable>
+                </td>
+                <td>
+                    <input type="number" id="co2" name="co2" value=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <lable>Light Intensity: </lable>
+                </td>
+                <td>
+                    <input type="number" id="light" name="light" value=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <button onclick="onInsertButtonClick()">Insert</button>
+                </td>
+            </tr>
+        </table>
+        <script>
+            var climate=[];
+            var count=climate.length;
+            const onInsertButtonClick=()=>{
+                var txtTemprature=document.getElementById("temprature");
+                var Temprature=txtTemprature.value ;
+
+                var txtHumadity=document.getElementById("humadity");
+                var Humadity=txtHumadity.value ;
+
+                var txtCo2=document.getElementById("co2");
+                var CO2=txtCo2.value ;
+
+                var txtLight=document.getElementById("light");
+                var LightItensity=txtLight.value ;
+
+                var Climates={
+                    id:climate.length+1,
+                    temprature:Temprature,
+                    humadity:Humadity,
+                    co2:CO2,
+                    light:LightItensity
+                }
+ 
+                climate.push(Climates);
+                console.log(climate);
+
+                var foundClimate=climate.filter((climate)=>(climate.temprature=='22'));
+                console.log("Searching Climate........");
+                console.log(foundClimate);
+            };
+        </script>
+    </body>
+</html>
