@@ -2,91 +2,63 @@
 <html>
 <head></head>
 <body>
-    <canvas id="canvas1" width="300" height="300"
-            onmousedown="onMouseDownHandler(event)"
-            onmouseup="onMouseUpHandler(event)"
-            style="border:1px solid blue"></canvas>
+    <canvas id="canvas1" width="300" height="300" onmousedown="onMouseDownHandler(event)" onmouseup="onMouseUpHandler(event)" style="border:1px solid blue"></canvas>
     <hr/>
-    <p>Local Storage: Data management</p>
-    <button onclick="onStoreDataLocalStorage()">Store data</button>
-    <button onclick="onRestoreDataLocalStorage()">Restore data</button>
-
     <script>
-        var startPoint = { x: 0, y: 0 };
-        var endPoint = { x: 0, y: 0 };
-        var lines = []; 
-        
-        function drawLine(lineData) {
-            const cnvs = document.getElementById('canvas1');
-            const ctx = cnvs.getContext("2d");
-            ctx.beginPath();
-            ctx.moveTo(lineData.startpoint.x, lineData.startpoint.y);
-            ctx.lineTo(lineData.endpoint.x, lineData.endpoint.y);
-            ctx.strokeStyle = lineData.color;
-            ctx.lineWidth = lineData.thickness;
-            ctx.stroke();
-        }
+    // Clean Code Strategy:
+    // global variables
+    var startPoint = { x: 0, y: 0 };
+    var endPoint = { x: 0, y: 0 };
+    var lines = [];
 
-        
-        function onMouseDownHandler(e) {
-            console.log("Mouse Down");
-            let x = e.clientX - e.target.offsetLeft;
-            let y = e.clientY - e.target.offsetTop;
-            startPoint.x = x;
-            startPoint.y = y;
-        }
-
-        
-        function onMouseUpHandler(e) {
-            console.log("Mouse Up");
-            let x = e.clientX - e.target.offsetLeft;
-            let y = e.clientY - e.target.offsetTop;
-            endPoint.x = x;
-            endPoint.y = y;
-
-            
-            let lineData = {
-                startpoint: { x: startPoint.x, y: startPoint.y },
-                endpoint: { x: endPoint.x, y: endPoint.y },
-                thickness: 2,
-                color: "blue"
-            };
-
-            
-            drawLine(lineData);
-
-            
-            lines.push(lineData);
-        }
-
-        
-        function onStoreDataLocalStorage() {
-            localStorage.setItem('lines', JSON.stringify(lines));
-        }
-
-        
-        function onRestoreDataLocalStorage() {
-            let storedLines = localStorage.getItem('lines');
-            if (storedLines) {
-                let restoredLines = JSON.parse(storedLines);
-                console.log("Restored from Local Storage:", restoredLines);
-
-                
-                restoredLines.map(line => {
-                    drawLine(line);
-                });
-
-                
-                lines = restoredLines;
-            } else {
-                console.log("No data in local storage.");
+    // function declaration
+    function draw() {
+        const cnvs = document.getElementById('canvas1');
+        const ctx = cnvs.getContext("2d");
+        ctx.clearRect(0, 0, cnvs.width, cnvs.height); // Clear the canvas before redrawing
+        ctx.beginPath();
+        if (lines !== null && lines.length > 0) {
+            for (var i = 0; i < lines.length; i++) {
+                let l = lines[i];
+                ctx.moveTo(l.startPoint.x, l.startPoint.y);
+                ctx.lineTo(l.endPoint.x, l.endPoint.y);
+                ctx.stroke();
             }
         }
+    }
 
-    
-        window.onload = function() {
-            onRestoreDataLocalStorage();
+    function onMouseDownHandler(e) {
+        const cnvs = document.getElementById('canvas1');
+        let x = e.clientX - cnvs.offsetLeft;
+        let y = e.clientY - cnvs.offsetTop;
+        startPoint.x = x;
+        startPoint.y = y;
+    }
+
+    function onMouseUpHandler(e) {
+        const cnvs = document.getElementById('canvas1');
+        let x = e.clientX - cnvs.offsetLeft;
+        let y = e.clientY - cnvs.offsetTop;
+        endPoint.x = x;
+        endPoint.y = y;
+
+        let line = {
+            startPoint: { x: startPoint.x, y: startPoint.y },
+            endPoint: { x: endPoint.x, y: endPoint.y }
         };
+
+        lines.push(line);
+        let strLines = JSON.stringify(lines);
+        localStorage.setItem("lines", strLines);
+        draw();
+    }
+
+    // Execution
+    let strRetrievedLines = localStorage.getItem("lines");
+    if (strRetrievedLines !== null) {
+        lines = JSON.parse(strRetrievedLines);
+        draw();
+    }
     </script>
 </body>
 </html>

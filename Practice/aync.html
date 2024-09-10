@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Asynchronous Programming</title>
+    </head>
+    <body>
+        <button onclick="show()">Click</button>
+        <script>
+            function show(){
+                console.log("Show Data");
+                showData();
+            }
+            function showData(){
+                let start=Date.now();
+                console.log(start);
+                var date=new Date(start);
+                console.log(date);
+            }
+            console.log("Before Calling  showtime......");
+            showData();
+            console.log("After calling showtime....");
+
+            console.log("Before calling onTimeCallBack....");
+            setTimeout(onTimeCallback,3000);
+            console.log("After calling onTimeCallBack....");
+        </script>
+    </body>
+</html>
