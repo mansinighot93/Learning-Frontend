@@ -2,25 +2,24 @@
 <html>
 <head></head>
 <body>
-    <button onclick="setDrawingMode('line')">Draw Line</button>
-    <button onclick="setDrawingMode('rectangle')">Draw Rectangle</button>
+    
 
     <canvas id="canvas1" width="300" height="300" 
             onmousedown="onMouseDownHandler(event)"
             onmouseup="onMouseUpHandler(event)" 
             onmousemove="onMouseMoveHandler(event)"
             style="border:1px solid blue"></canvas>
-
+    <button onclick="setDrawingMode('line')">Draw Line</button>
+    <button onclick="setDrawingMode('rectangle')">Draw Rectangle</button>
     <script>
         var startPoint = { x: 0, y: 0 };
         var endPoint = { x: 0, y: 0 };
         var isMouseDown = false;
-        var drawingMode = 'line'; // Default mode is drawing a line
+        var drawingMode = 'line'; 
 
-        // Function to set the drawing mode (line or rectangle)
         function setDrawingMode(mode) {
-            drawingMode = mode;
-            console.log("Drawing mode set to:", mode);
+            drawingMode = mode; 
+            console.log("Drawing mode set to:", drawingMode);
         }
 
         function onMouseDownHandler(e) {
@@ -42,12 +41,9 @@
 
                 const cnvs = document.getElementById('canvas1');
                 const ctx = cnvs.getContext("2d");
-
-                // Clear the canvas before drawing
                 ctx.clearRect(0, 0, cnvs.width, cnvs.height);
 
-                // Drawing the shape in real-time
-                if (drawingMode === 'line') {
+                if (drawingMode === 'line') { 
                     drawLine(ctx);
                 } else if (drawingMode === 'rectangle') {
                     drawRectangle(ctx);
@@ -65,17 +61,9 @@
             const cnvs = document.getElementById('canvas1');
             const ctx = cnvs.getContext("2d");
 
-            // Final drawing on mouse up
-            if (drawingMode === 'line') {
-                drawLine(ctx);
-            } else if (drawingMode === 'rectangle') {
-                drawRectangle(ctx);
-            }
-
             isMouseDown = false;
         }
 
-        // Function to draw a line
         function drawLine(ctx) {
             ctx.beginPath();
             ctx.moveTo(startPoint.x, startPoint.y);
@@ -85,7 +73,6 @@
             ctx.stroke();
         }
 
-        // Function to draw a rectangle
         function drawRectangle(ctx) {
             let width = endPoint.x - startPoint.x;
             let height = endPoint.y - startPoint.y;
