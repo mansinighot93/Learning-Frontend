@@ -57,6 +57,4 @@ function insertData(){
     };
     svc.create(product);
     console.log(svc.getAll());
-    
-
 }
