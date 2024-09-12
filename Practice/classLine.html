@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shapes</title>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="500" height="400"></canvas>
+        <script>
+            class shape{
+                constructor(strokeStyle = 'black',lineWidth = 1){
+                    this.strokeStyle=strokeStyle;
+                    this.lineWidth=lineWidth;
+                }
+            }
+            class line extends shape{
+                constructor(startPointX,startPointY,endPointX,endPointY,strokeStyle = 'black',lineWidth = 1){
+                    super(strokeStyle, lineWidth);
+                    this.startPointX=startPointX;
+                    this.startPointY=startPointY;
+                    this.endPointX=endPointX;
+                    this.endPointY=endPointY;
+                }
+            
+                drawLine(){
+                    const canvas = document.getElementById('myCanvas');
+                    const ctx = canvas.getContext('2d');
+                    ctx.beginPath();
+                    ctx.moveTo(this.startPointX, this.startPointY);
+                    ctx.lineTo(this.endPointX, this.endPointY);
+                    ctx.strokeStyle = this.strokeStyle;
+                    ctx.lineWidth = this.lineWidth;
+                    ctx.stroke();
+                }
+            }
+
+            class rectangle extends shape{
+                constructor(startPointX,startPointY,width,height){
+                    this.startPointX=startPointX;
+                    this.startPointY=startPointY;
+                    this.width=width;
+                    this.height=height;
+                }
+
+                drawReact(){
+                    ctx.beginPath();
+                    ctx.rect(this.startPointX, this.startPointY, this.width, this.height);
+                    ctx.fillStyle = this.fillStyle;
+                    ctx.fill();
+                    ctx.lineWidth = this.lineWidth;
+                    ctx.strokeStyle = this.strokeStyle;
+                    ctx.stroke();
+                }
+            }
+
+            class circle extends shape{
+                constructor(center,radius,strokeStyle = 'black',lineWidth = 1){
+                    super(strokStyle,lineWidth);
+                    this.center=center;
+                    this.radius=radius;
+                }
+            }
+        
+            const Line = new line(50, 50, 250, 50, 'blue', 4);
+            Line.drawLine();
+            const Reactangle = new rectangle(50, 50, 250, 50, 'blue', 4);
+            Reactangle.drawReact();
+        </script>
+    </body>
+</html>
