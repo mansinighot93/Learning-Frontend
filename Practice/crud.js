@@ -1,5 +1,5 @@
 console.log("from crud.js");
-/*class ProductService{
+class ProductService{
     constructor(){
         this.products=[];
     }
@@ -12,7 +12,7 @@ console.log("from crud.js");
        const product= this.products.find(p=>p.id === productId)
        return product;
     }
- 
+    
     create(product){
         this.products.push(product);
     }
@@ -38,41 +38,25 @@ console.log("from crud.js");
         return deletedProduct;
     }
 }
- 
-let svc=new ProductService();
-console.log(svc.getAll());
-let theProduct1={ id:12, title:"gerbera", description:"wedding Flower",unitprice:5, stackavailable:9000};
-svc.create(theProduct1);
- 
-let theProduct2={ id:13, title:"rose", description:"valentine Flower",unitprice:15, stackavailable:19000};
-svc.create(theProduct2);
-console.log(svc.getAll());
-
-let updatedProduct = { id: 12, title: "gerbera", description: "updated description", unitprice: 10, stackavailable: 8000 };
-svc.update(updatedProduct);
-console.log(svc.getAll());
-
-let removedProduct=svc.remove(12);
-console.log("Removed Product:", removedProduct);
-console.log(svc.getAll());
+let svc=new ProductService()
 console.log("***********************************");
-*/
-let products = [];
+
 
 function insertData(){
     let id = parseInt(document.getElementById('id').value);
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
     let unitprice = parseFloat(document.getElementById('unitprice').value);
-    let stackavailable = parseInt(document.getElementById('stackavailable').value);
+    let stockavailable = parseInt(document.getElementById('stockavailable').value);
     let product={
         id: id,
         title: title,
         description: description,
         unitprice: unitprice,
-        stackavailable: stackavailable
+        stockavailable: stockavailable
     };
-    products.push(product);
-    console.log()
+    svc.create(product);
+    console.log(svc.getAll());
+    
 
 }
