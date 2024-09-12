@@ -34,7 +34,8 @@
             }
 
             class rectangle extends shape{
-                constructor(startPointX,startPointY,width,height){
+                constructor(startPointX,startPointY,width,height,strokeStyle = 'black',lineWidth = 1){
+                    super(strokeStyle, lineWidth);
                     this.startPointX=startPointX;
                     this.startPointY=startPointY;
                     this.width=width;
@@ -42,6 +43,8 @@
                 }
 
                 drawReact(){
+                    const canvas = document.getElementById('myCanvas');
+                    const ctx = canvas.getContext('2d');
                     ctx.beginPath();
                     ctx.rect(this.startPointX, this.startPointY, this.width, this.height);
                     ctx.fillStyle = this.fillStyle;
@@ -53,17 +56,33 @@
             }
 
             class circle extends shape{
-                constructor(center,radius,strokeStyle = 'black',lineWidth = 1){
-                    super(strokStyle,lineWidth);
-                    this.center=center;
-                    this.radius=radius;
+                constructor(centerX,centerY,radius,strokeStyle = 'black',lineWidth = 1){
+                    super(strokeStyle,lineWidth);
+                    this.centerX = centerX;
+                    this.centerY = centerY;
+                    this.radius = radius;
+                }
+
+                drawCircle(){
+                    const canvas = document.getElementById('myCanvas');
+                    const ctx = canvas.getContext('2d');
+                    ctx.beginPath();
+                    ctx.arc(this.centerX, this.centerY, this.radius, 0, Math.PI * 2);
+                    ctx.strokeStyle = this.strokeStyle;
+                    ctx.lineWidth = this.lineWidth;
+                    ctx.stroke();
                 }
             }
         
-            const Line = new line(50, 50, 250, 50, 'blue', 4);
+            const Line=new line(50, 50, 250, 50, 'blue', 4);
             Line.drawLine();
-            const Reactangle = new rectangle(50, 50, 250, 50, 'blue', 4);
+
+            const Reactangle = new rectangle(50,100,200,100,'red',2);
             Reactangle.drawReact();
+
+            const Circle=new circle(300,300,50,'green',3);
+            Circle.drawCircle();
+
         </script>
     </body>
 </html>
