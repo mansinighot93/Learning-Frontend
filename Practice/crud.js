@@ -56,24 +56,33 @@ function getInsertData(){
         stockavailable: stockavailable
     };
 }
-
+/*
 function insertData() {
     let product = getInsertData();
     svc.create(product);
     console.log(svc.getAll());
+
+    let productS= svc.getAll();
+    displayAllProducts(productS);
 }
 
 
 function showAllData() {
-    console.log("All Products: ",svc.getAll());
-}
+    let productS= svc.getAll();
 
+    displayAllProducts(productS);
+    console.log("All Products: ",svc.getAll());
+
+}
 
 // Update data (update product)
 function updateData() {
     let product = getInsertData();
     svc.update(product);
     console.log(svc.getAll());
+
+    let productS= svc.getAll();
+    displayAllProducts(productS);
 }
 
 // Remove data (remove product)
@@ -83,4 +92,68 @@ function removeData() {
     svc.remove(product.productId);
     console.log(svc.getAll());
 
+    let productS= svc.getAll();
+    displayAllProducts(productS);
+
+}
+*/
+
+const insertData=()=>{
+    
+    let product=getInsertData();
+    svc.create(product);
+
+    let productS= svc.getAll();
+    displayAllProducts(productS);
+};
+
+const updateData=()=>{
+    let product=getInsertData();
+    svc.update(product);
+
+    let productS= svc.getAll();
+    displayAllProducts(productS);
+};
+
+const removeData=()=>{
+    let product=getInsertData();
+    svc.remove(product);
+
+    let productS= svc.getAll();
+    displayAllProducts(productS);
+};
+
+const displayAllProducts=(products)=>{
+    let lstProducts=document.getElementById("list");
+
+    //remove child nodes if exist
+    //clear all items from list
+    if(lstProducts.hasChildNodes){
+        while(lstProducts.firstChild)
+            {
+                lstProducts.removeChild(lstProducts.firstChild);
+            } 
+    }
+    
+    //get all products and fill inside list
+    products.map((product)=>{
+        const node = document.createElement("li");
+        const textnode = document.createTextNode(product.id +" : " + product.title + " : " + product.description + " : " + product.unitprice + " : " + product.stockavailable);
+        node.appendChild(textnode);
+        lstProducts.appendChild(node);
+    })
+}
+const displayProduct=(product)=>{
+    //get data from controls and create product json object
+    let txtId=document.getElementById("id");
+    let txtTitle=document.getElementById("title");
+    let txtDescription=document.getElementById("description");
+    let txtUnitPrice=document.getElementById("unitprice");
+    let txtStockAvailable=document.getElementById("stockavailable");
+    
+    txtId.innerHTML=product.id;
+    txtTitle.innerHTML=product.title;
+    txtDescription.innerHTML=product.description;
+    txtUnitPrice.innerHTML=product.unitPrice;
+    txtStockAvailable.innerHTML=product.stockAvailable;
 }
