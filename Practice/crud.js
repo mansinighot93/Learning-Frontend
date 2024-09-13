@@ -56,7 +56,7 @@ function getInsertData(){
         stockavailable: stockavailable
     };
 }
-/*
+
 function insertData() {
     let product = getInsertData();
     svc.create(product);
@@ -96,8 +96,8 @@ function removeData() {
     displayAllProducts(productS);
 
 }
-*/
 
+/*
 const insertData=()=>{
     
     let product=getInsertData();
@@ -116,13 +116,13 @@ const updateData=()=>{
 };
 
 const removeData=()=>{
-    let product=getInsertData();
+    let productId = parseInt(document.getElementById('id').value);
     svc.remove(product);
 
     let productS= svc.getAll();
     displayAllProducts(productS);
 };
-
+*/
 const displayAllProducts=(products)=>{
     let lstProducts=document.getElementById("list");
 
@@ -141,8 +141,9 @@ const displayAllProducts=(products)=>{
         const textnode = document.createTextNode(product.id +" : " + product.title + " : " + product.description + " : " + product.unitprice + " : " + product.stockavailable);
         node.appendChild(textnode);
         lstProducts.appendChild(node);
-    })
-}
+    });
+};
+
 const displayProduct=(product)=>{
     //get data from controls and create product json object
     let txtId=document.getElementById("id");
