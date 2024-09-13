@@ -28,15 +28,16 @@ class ProductService{
     }
  
     remove(productId){
+        console.log("removing data " + productId);
         const productIndex=this.products.findIndex(p=>p.id ==productId);
         if(productIndex === -1){
-            console.log("Product not found with id "+ productId);
-            return null;
+            console.log("Product not found with id "+ productId)
         }
+        console.log(productIndex);
         //remove the product from the array
-        const deletedProduct=this.products.slice(productIndex,1)[0];
-        return deletedProduct;
-    }
+        this.products=this.products.splice(productIndex,1);
+        //this.products=this.products.filter( (product)=>(product.id !== productId));
+    }    
 }
 
 

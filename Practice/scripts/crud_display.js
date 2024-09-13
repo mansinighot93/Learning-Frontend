@@ -31,15 +31,15 @@ const displayAllProducts=(products)=>{
     //get all products and fill inside list
     products.map((product)=>{
         const node = document.createElement("li");
-        const textnode = document.createTextNode(product.title + " : " + product.description + " : " + product.unitprice + " : " + product.stockavailable);
+        const textnode = document.createTextNode(product.id + " : " + product.title + " : " + product.description + " : " + product.unitprice + " : " + product.stockavailable);
         node.appendChild(textnode);
         lstProducts.appendChild(node);
     })
+    }
     let retrieved=localStorage.getItem("products");
     if(retrieved !==  null){
         products=JSON.parse(retrieved); 
         svc.getAll();
-    }
 }
 
 const displayProduct=(product)=>{
