@@ -11,9 +11,6 @@ function getInsertData(){
         unitprice: unitprice,
         stockavailable: stockavailable
     };
-    let pItem=JSON.stringify(products);
-    localStorage.setItem("products",pItem);
-    svc.getAll();
 }
 
 const displayAllProducts=(products)=>{
@@ -35,12 +32,9 @@ const displayAllProducts=(products)=>{
         node.appendChild(textnode);
         lstProducts.appendChild(node);
     })
-    }
-    let retrieved=localStorage.getItem("products");
-    if(retrieved !==  null){
-        products=JSON.parse(retrieved); 
-        svc.getAll();
+
 }
+
 
 const displayProduct=(product)=>{
     //get data from controls and create product json object
