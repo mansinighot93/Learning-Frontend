@@ -42,19 +42,45 @@ let svc=new ProductService()
 console.log("***********************************");
 
 
-function insertData(){
+function getInsertData(){
     let id = parseInt(document.getElementById('id').value);
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
     let unitprice = parseFloat(document.getElementById('unitprice').value);
     let stockavailable = parseInt(document.getElementById('stockavailable').value);
-    let product={
+    return {
         id: id,
         title: title,
         description: description,
         unitprice: unitprice,
         stockavailable: stockavailable
     };
+}
+
+function insertData() {
+    let product = getInsertData();
     svc.create(product);
     console.log(svc.getAll());
+}
+
+
+function showAllData() {
+    console.log("All Products: ",svc.getAll());
+}
+
+
+// Update data (update product)
+function updateData() {
+    let product = getInsertData();
+    svc.update(product);
+    console.log(svc.getAll());
+}
+
+// Remove data (remove product)
+function removeData() {
+    let product = getInsertData();
+    let productId = parseInt(document.getElementById('id').value);
+    svc.remove(product.productId);
+    console.log(svc.getAll());
+
 }
