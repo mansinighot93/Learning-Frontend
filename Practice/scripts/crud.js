@@ -39,32 +39,3 @@ class ProductService{
         //this.products=this.products.filter( (product)=>(product.id !== productId));
     }    
 }
-
-
-
-/*
-const insertData=()=>{
-    
-    let product=getInsertData();
-    svc.create(product);
-
-    let productS= svc.getAll();
-    displayAllProducts(productS);
-};
-
-const updateData=()=>{
-    let product=getInsertData();
-    svc.update(product);
-
-    let productS= svc.getAll();
-    displayAllProducts(productS);
-};
-
-const removeData=()=>{
-    let productId = parseInt(document.getElementById('id').value);
-    svc.remove(product);
-
-    let productS= svc.getAll();
-    displayAllProducts(productS);
-};
-*/

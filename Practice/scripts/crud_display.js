@@ -35,7 +35,6 @@ const displayAllProducts=(products)=>{
 
 }
 
-
 const displayProduct=(product)=>{
     //get data from controls and create product json object
     let txtId=document.getElementById("id");
