@@ -2,10 +2,10 @@ import { useState } from 'react'
 function App() {
   //data
    let title="Transflower";
-   let person={ firstname:'Sameer', lastname:'Jadhav', email:'sameer.jadhav@gmail.com',
+   let person={ firstname:'Manasi', lastname:'Nighot', email:'manasi.@gmail.com',
                 contact:'9881265489'};
    //State
-   const [count, setCount]=useState(12);    //react hook: useState
+   const [count, setCount]=useState(0);    //react hook: useState
    
    //event handler
    const onButtonClick=()=>{
