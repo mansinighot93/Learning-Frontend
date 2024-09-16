@@ -1,4 +1,3 @@
-
 const Details=(props)=>{
     return(
         <div>

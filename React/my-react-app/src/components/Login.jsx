@@ -22,6 +22,7 @@
             <td><button type="submit">Login</button></td>
           </tr>
         </table>
+        <hr/>
         </form>
         </div>
     </>

@@ -1,5 +1,7 @@
 import Login from "./components/Login";
 import List from "./components/List";
+import Counter from "./components/Counter";
+
 
 function Index(){
     return (
@@ -8,6 +10,7 @@ function Index(){
             <hr/>
             <Login/>
             <List/>
+            <Counter/>
         </div>
     );
 }
