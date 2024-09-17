@@ -13,10 +13,12 @@ function Register() {
   });
   const handleRegisterChange = (event) => {
     setNewUser({
-      ...newUser,[event.target.name]: event.target.value
+      ...newUser,
+      [event.target.name]: event.target.value
     });
   };
-  const onRegister = () => {
+  const onRegister = (event) => {
+    event.preventDefault();
     AuthService.register(newUser);
     setNewUser({
       id:'',
@@ -29,6 +31,7 @@ function Register() {
   };
   return (
   <div>
+    <form onSubmit={onRegister}>
     <table>
       <tr>
         <td>ID : </td>
@@ -55,9 +58,10 @@ function Register() {
         <td><input type="password" value={newUser.password} onChange={handleRegisterChange}/></td>
       </tr>
       <tr>
-        <td><button  onClick={onRegister}>Register</button></td>
+        <td><button type="submit">Register</button></td>
       </tr>
     </table>
+    </form>
     <hr/>
   </div>
 );
