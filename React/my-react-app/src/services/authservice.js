@@ -12,11 +12,10 @@ var users = [
 //Service
  
 const AuthService = {
- 
     //service methods
    
-    validate(email, password,firstname,lastname,contactnumber){
-        let user= users.find( (theUser)=>(theUser.email ===email && theUser.password===password && theUser.firstname ===firstname && theUser.lastname ===lastname && theUser.contactnumber ===contactnumber));
+    validate(email, password){
+        let user= users.find( (theUser)=>(theUser.email ===email && theUser.password===password));
         if(user ==undefined){
             return false;
         }
@@ -34,6 +33,7 @@ const AuthService = {
  
      register(theUser){
          users.push(theUser);
+         console.log("Registration : "+users);
      },
  
      Update(theUser){
@@ -44,6 +44,6 @@ const AuthService = {
      remove(id){
          users=users.filter(theUser=>theUser.id !==id);
      }
- }
+}
  
  export default AuthService;

@@ -6,5 +6,5 @@ import Index from './Index.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Index />
-  </StrictMode>,
+  </StrictMode>
 )
