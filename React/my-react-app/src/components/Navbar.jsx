@@ -6,6 +6,8 @@ const Navbar = () => (
         <Link to="/aboutus">About us</Link> |
         <Link to="/contact">Contact</Link>  |
         <Link to="/services">Services</Link>  |
+        <Link to="/bi">Buissness Intelligence</Link>  |
+        <Link to="/dashboard">Dashboard</Link>   |
         <Link to="/login">Login</Link>   |
         <Link to="/register">Register</Link>
     </nav>
