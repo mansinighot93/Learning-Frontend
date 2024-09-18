@@ -33,7 +33,6 @@ const AuthService = {
  
      register(theUser){
          users.push(theUser);
-         console.log("Registration : "+users);
      },
  
      Update(theUser){
