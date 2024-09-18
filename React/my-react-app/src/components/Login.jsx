@@ -3,8 +3,8 @@ import AuthService from "../services/authservice";
  
 function Login() {
     //Define state for login
-    const [email, setEmail]=useState('ravi.tambade@transflower.in');
-    const [password, setPassword]=useState('seed');
+    const [email, setEmail]=useState('');
+    const [password, setPassword]=useState('');
  
     //change state based on text change event of text box (input)
     const onChangeEmail=(event)=>{
@@ -61,5 +61,4 @@ function Login() {
     </>
   )
 }
- 
 export default Login;

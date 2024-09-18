@@ -1,69 +1,73 @@
 import { useState } from "react";
 import AuthService from "../services/authservice";
 
-
 function Register() {
-  const [newUser, setNewUser] = useState({
-    id:'',
-    email: '',
-    password: '',
-    firstname: '',
-    lastname: '',
-    contactnumber: ''
-  });
-  const handleRegisterChange = (event) => {
-    setNewUser({
-      ...newUser,
-      [event.target.name]: event.target.value
-    });
-  };
-  const onRegister = (event) => {
-    event.preventDefault();
-    AuthService.register(newUser);
-    setNewUser({
-      id:'',
-      email: '',
-      password: '',
-      firstname: '',
-      lastname: '',
-      contactnumber: ''
-    });
-  };
-  return (
-  <div>
-    <form onSubmit={onRegister}>
-    <table>
-      <tr>
-        <td>ID : </td>
-        <td><input type="text" value={newUser.id} onChange={handleRegisterChange}></input></td>
-      </tr>
-      <tr>
-        <td>First Name: </td>
-        <td><input type="text" value={newUser.firstname} onChange={handleRegisterChange}></input></td>
-      </tr>          
-      <tr>
-        <td>Last Name: </td>
-        <td><input type="text" value={newUser.lastname} onChange={handleRegisterChange}></input></td>
-      </tr>
-      <tr>
-        <td>Mobile Number: </td>
-        <td><input type="text" value={newUser.contactnumber} onChange={handleRegisterChange}></input></td>
-      </tr>
-      <tr>
-        <td>Email</td>
-        <td><input type="email" value={newUser.email} onChange={handleRegisterChange}/></td>
-      </tr>
-      <tr>
-        <td>Pasword</td>
-        <td><input type="password" value={newUser.password} onChange={handleRegisterChange}/></td>
-      </tr>
-      <tr>
-        <td><button type="submit">Register</button></td>
-      </tr>
-    </table>
-    </form>
-    <hr/>
-  </div>
-);
+    const [id, setId] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastname] = useState('');
+    const [contactnumber, setContactnumber] = useState('');
+
+    const onRegister = (event) => {
+      event.preventDefault();
+        const newUser = {
+          id,
+            email,
+            password,
+            firstname,
+            lastname,
+            contactnumber
+        };
+        AuthService.register(newUser);
+        console.log("First Name:" +firstname,"Last Name:" +lastname,"Contact Number:" +contactnumber,"Email Id:" +email,"Password:" +password);
+        setId('');
+        setEmail('');
+        setPassword('');
+        setFirstname('');
+        setLastname('');
+        setContactnumber('');
+    };
+
+    return (
+        <div>
+            <h2>Register</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>ID:</td>
+                        <td><input type="text" value={id} onChange={(e) => setId(e.target.value)} /></td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td>
+                        <td><input type="text" value={firstname} onChange={(e) => setFirstname(e.target.value)} /></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td><input type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} /></td>
+                    </tr>
+                    <tr>
+                        <td>Contact Number</td>
+                        <td><input type="text" value={contactnumber} onChange={(e) => setContactnumber(e.target.value)} /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" value={email} onChange={(e) => setEmail(e.target.value)} /></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" value={password} onChange={(e) => setPassword(e.target.value)} /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button onClick={onRegister}>Register</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    );
 }
+
 export default Register;
