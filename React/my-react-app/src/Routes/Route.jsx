@@ -14,7 +14,11 @@ import BarChart from "../components/charts/Barchart";
 import Bi from "../components/charts/Bi";
 import Profile from "../components/crm/Profile";
 import Settings from "../components/crm/Settings";
-
+import CustomerDelete from "../components/crm/customer/CustomerDelete";
+import CustomerInsert from "../components/crm/customer/CustomerInsert";
+import CustomerUpdate from "../components/crm/customer/CustomerUpdate";
+import Customers from "../components/crm/customer/Customers";
+import Customer from "../components/crm/customer/Customers";
 const AppRoutes = () => (
     <Routes>
         <Route path="/" element={<Home/>}/>
@@ -33,6 +37,12 @@ const AppRoutes = () => (
             <Route path="line" element={<LineChart/>}/>
             <Route path="pie" element={<PieChart/>}/>
             <Route path="bar" element={<BarChart/>}/>
+        </Route>
+        <Route path="customers" element={<Customers/>}>
+            <Route path="customers/:id" element={<Customer/>}/>
+            <Route path="customers/update/:id" element={ <CustomerUpdate/>}/>
+            <Route path="customers/delete/:id" element={<CustomerDelete/>}/>
+            <Route path="customers/insert" element={<CustomerInsert/>}/>
         </Route>
     </Routes>
 );
