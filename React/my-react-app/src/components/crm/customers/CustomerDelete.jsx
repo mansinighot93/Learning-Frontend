@@ -1,36 +1,59 @@
+// components/CustomerDelete.js
 
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import CustomerService from "../../../services/customerservice";
 
-const CustomerDelete=()=>{
+const CustomerDelete = () => {
     const { id } = useParams();
-    const [customer, setcustomer] = useState({ id: 1, email: 'ravi.tambade@transflower.in',  firstname:"Ravi", lastname:"Tambade",contactnumber:"9881735801" });
-    
-  
+    const navigate = useNavigate();
+    const [customer, setCustomer] = useState(null);
+    const [error, setError] = useState(null);
+
     useEffect(() => {
-        const existingcustomer =CustomerService.getCustomerById(parseInt(id));
-        if (existingcustomer) {
-            setcustomer(existingcustomer);
+        const existingCustomer = CustomerService.getCustomerById(parseInt(id));
+        if (existingCustomer) {
+            setCustomer(existingCustomer);
+        } else {
+            setError(`Customer with ID ${id} not found.`);
         }
     }, [id]);
 
-    const handleYes=()=>{
-      let theExistingCustomerId= parseInt(id);
-      CustomerService.remove(theExistingCustomerId);
+    const handleYes = () => {
+        try {
+            CustomerService.remove(parseInt(id));
+            alert("Customer deleted successfully.");
+            navigate("/customers"); // Navigate to customer list or appropriate page
+        } catch (err) {
+            setError(err.message);
+        }
     }
-    return(
-        <>
-        <h3>Customer Details</h3>
-         <p> Name: {customer.firstname} {customer.lastname}</p>
-         <p>Email: {customer.email}</p>
-         <p>Contact Nubmer:{customer.contactnumber}</p>
-         <p>Location: {customer.location}</p>
 
-         <h3>Do you want to delete  the Customer ?</h3>
-         <button onClick={handleYes}> yes</button>
+    const handleNo = () => {
+        navigate("/customers"); // Navigate back without deleting
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
+    if (!customer) {
+        return <p>Loading...</p>;
+    }
+
+    return (
+        <>
+            <h3>Customer Details</h3>
+            <p> Name: {customer.firstname} {customer.lastname}</p>
+            <p>Email: {customer.email}</p>
+            <p>Contact Number: {customer.contactnumber}</p>
+            {/* Removed Location as it's not part of customer data */}
+
+            <h3>Do you want to delete this Customer?</h3>
+            <button onClick={handleYes}>Yes</button>
+            <button onClick={handleNo}>No</button>
         </>
-    )
+    );
 };
 
 export default CustomerDelete;

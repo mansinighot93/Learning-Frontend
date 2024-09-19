@@ -1,48 +1,61 @@
-//data
-var customers = [
-    { id: 1, email: 'ravi.tambade@trransflower.in',firstname:"Ravi", lastname:"Tambade",contactnumber:"9881735801" },
-    { id: 2, email: 'shubhangi.tambade@transflower.in',firstname:"shubhangi", lastname:"Tambade",contactnumber:"9881735801" },
-    { id: 3, email: 'sanika.bhor@gmail.com',firstname:"Sankia", lastname:"Bhor",contactnumber:"9881735801" },
-    { id: 4, email: 'nikhil.navale@gmail.com',firstname:"nikhil", lastname:"Tambade",contactnumber:"9881735801" },
-    { id: 5, email: 'shreedhar.patil@gmail.com',firstname:"shreedhar", lastname:"Tambade",contactnumber:"9881735801" },
-    { id: 6, email: 'Sharan.kulkarni@gmail.com',firstname:"Sharan", lastname:"Tambade",contactnumber:"9881735801" },
-    { id: 7, email: 'kartik.g@gmail.com',firstname:"kartik", lastname:"Tambade",contactnumber:"9881735801" },    
-    { id: 8, email: 'seema.patil@gmail.com',firstname:"seema", lastname:"Tambade",contactnumber:"9881735801" },
+// services/customerservice.js
+
+// Data
+let customers = [
+    { id: 1, email: 'ravi.tambade@transflower.in', firstname: "Ravi", lastname: "Tambade", contactnumber: "9881735801", password: "password1" },
+    { id: 2, email: 'shubhangi.tambade@transflower.in', firstname: "Shubhangi", lastname: "Tambade", contactnumber: "9881735801", password: "password2" },
+    { id: 3, email: 'sanika.bhor@gmail.com', firstname: "Sanika", lastname: "Bhor", contactnumber: "9881735801", password: "password3" },
+    { id: 4, email: 'nikhil.navale@gmail.com', firstname: "Nikhil", lastname: "Navale", contactnumber: "9881735801", password: "password4" },
+    { id: 5, email: 'shreedhar.patil@gmail.com', firstname: "Shreedhar", lastname: "Patil", contactnumber: "9881735801", password: "password5" },
+    { id: 6, email: 'sharan.kulkarni@gmail.com', firstname: "Sharan", lastname: "Kulkarni", contactnumber: "9881735801", password: "password6" },
+    { id: 7, email: 'kartik.g@gmail.com', firstname: "Kartik", lastname: "G", contactnumber: "9881735801", password: "password7" },    
+    { id: 8, email: 'seema.patil@gmail.com', firstname: "Seema", lastname: "Patil", contactnumber: "9881735801", password: "password8" },
 ];
-//Service
- 
+
+// Service
 const CustomerService = {
-    //service methods
-   
-    validate(email, password){
-        let customer= customer.find( (theCustomer)=>(theCustomer.email ===email && theCustomer.password===password));
-        if(customer ==undefined){
-            return false;
+    // Validate customer by email and password
+    validate(email, password) {
+        const customer = customers.find(
+            (theCustomer) => theCustomer.email === email && theCustomer.password === password
+        );
+        return customer !== undefined;
+    },
+
+    // Get all customers
+    getAll() {    
+        return customers;
+    },
+
+    // Get customer by ID
+    getCustomerById(id) {
+        return customers.find(customer => customer.id === id);
+    },
+
+    // Register a new customer
+    register(theCustomer) {
+        // Ensure the customer ID is unique
+        const exists = customers.some(customer => customer.id === theCustomer.id);
+        if (exists) {
+            throw new Error(`Customer with ID ${theCustomer.id} already exists.`);
         }
-        return true;
-     },
- 
-     getAll() {    
-         return customers;
-     },
- 
-     getCustomerById(id){
-        let customer= customer.find( (theCustomer)=>(theCustomer.id ===id));
-        return customer;
-     },
- 
-     register(theCustomer){
         customers.push(theCustomer);
-     },
- 
-     Update(theCustomer){
-        customers=customers.filter(customer=>customer.id !==theCustomer.id);
-        customers.push(theCustomer);
-     },
- 
-     remove(id){
-         customers=customers.filter(theCustomer=>theUser.id !==id);
-     }
+    },
+
+    // Update existing customer
+    update(theCustomer) {
+        const index = customers.findIndex(customer => customer.id === theCustomer.id);
+        if (index !== -1) {
+            customers[index] = theCustomer;
+        } else {
+            throw new Error(`Customer with ID ${theCustomer.id} not found.`);
+        }
+    },
+
+    // Remove customer by ID
+    remove(id) {
+        customers = customers.filter(customer => customer.id !== id);
+    }
 }
- 
- export default CustomerService;
+
+export default CustomerService;

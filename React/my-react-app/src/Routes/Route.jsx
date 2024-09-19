@@ -15,7 +15,7 @@ import Bi from "../components/charts/Bi";
 import Profile from "../components/crm/Profile";
 import Settings from "../components/crm/Settings";
 import Customers from "../components/crm/customers/Customers";
-import Customer from "../components/crm/customers/Customers";
+import CustomerDetails from "../components/crm/customers/CustomerDetails";
 import CustomerDelete from "../components/crm/customers/CustomerDelete";
 import CustomerInsert from "../components/crm/customers/CustomerInsert";
 import CustomerUpdate from "../components/crm/customers/CustomerUpdate";
@@ -40,10 +40,10 @@ const AppRoutes = () => (
             <Route path="bar" element={<BarChart/>}/>
         </Route>
         <Route path="customers" element={<Customers/>}/>
-        <Route path="customers/details/:id" element={<Customer/>}/>
-        <Route path="customers/update/:id" element={ <CustomerUpdate/>}/>
-        <Route path="customers/delete/:id" element={<CustomerDelete/>}/>
-        <Route path="customers/insert" element={<CustomerInsert/>}/>
+                <Route path="/customers/details/:id" element={<CustomerDetails />} />
+                <Route path="/customers/insert" element={<CustomerInsert />} />
+                <Route path="/customers/edit/:id" element={<CustomerUpdate />} />
+                <Route path="/customers/delete/:id" element={<CustomerDelete />} />
     </Routes>
 );
 export default AppRoutes;
