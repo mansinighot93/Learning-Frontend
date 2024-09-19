@@ -14,11 +14,12 @@ import BarChart from "../components/charts/Barchart";
 import Bi from "../components/charts/Bi";
 import Profile from "../components/crm/Profile";
 import Settings from "../components/crm/Settings";
+import Customers from "../components/crm/customer/Customers";
+import Customer from "../components/crm/customer/Customers";
 import CustomerDelete from "../components/crm/customer/CustomerDelete";
 import CustomerInsert from "../components/crm/customer/CustomerInsert";
 import CustomerUpdate from "../components/crm/customer/CustomerUpdate";
-import Customers from "../components/crm/customer/Customers";
-import Customer from "../components/crm/customer/Customers";
+
 const AppRoutes = () => (
     <Routes>
         <Route path="/" element={<Home/>}/>

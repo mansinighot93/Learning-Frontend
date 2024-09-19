@@ -1,5 +1,5 @@
 //data
-var users = [
+var customers = [
     { id: 1, email: 'ravi.tambade@trransflower.in',firstname:"Ravi", lastname:"Tambade",contactnumber:"9881735801" },
     { id: 2, email: 'shubhangi.tambade@transflower.in',firstname:"Ravi", lastname:"Tambade",contactnumber:"9881735801" },
     { id: 3, email: 'sanika.bhor@gmail.com',firstname:"Sankia", lastname:"Bhor",contactnumber:"9881735801" },

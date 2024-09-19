@@ -3,7 +3,7 @@ const Navbar = () => (
     <nav>
         <Link to="/">Home</Link>   |
         <Link to="/list">List</Link>  |
-        <Link to="/cutomers">Costomers List</Link>  
+        <Link to="/customers">Costomers List</Link>  
         <Link to="/aboutus">About us</Link> |
         <Link to="/contact">Contact</Link>  |
         <Link to="/services">Services</Link>  |
