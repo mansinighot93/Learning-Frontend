@@ -40,11 +40,10 @@ const AppRoutes = () => (
             <Route path="bar" element={<BarChart/>}/>
         </Route>
         <Route path="customers" element={<Customers/>}/>
-            <Route path="customers/:id" element={<Customer/>}/>
-            <Route path="customers/update/:id" element={ <CustomerUpdate/>}/>
-            <Route path="customers/delete/:id" element={<CustomerDelete/>}/>
-            <Route path="customers/insert" element={<CustomerInsert/>}/>
-            <Route path="customers/details/:id" element={<Customer/>}/>
+        <Route path="customers/details/:id" element={<Customer/>}/>
+        <Route path="customers/update/:id" element={ <CustomerUpdate/>}/>
+        <Route path="customers/delete/:id" element={<CustomerDelete/>}/>
+        <Route path="customers/insert" element={<CustomerInsert/>}/>
     </Routes>
 );
 export default AppRoutes;

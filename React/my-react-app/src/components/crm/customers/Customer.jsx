@@ -13,7 +13,7 @@ const Customer=()=>{
             setcustomer(existingcustomer);
         }
     }, [id]);
- 
+
     return(
         <>
         <h3>Customer Details</h3>

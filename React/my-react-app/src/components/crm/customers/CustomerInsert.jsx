@@ -1,51 +1,69 @@
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import CustomerService from "../../../services/customerservice";
 
-const CreateCustomer = () => {
-    const navigate = useNavigate();
-    const [customer, setCustomer] = useState({ Email: '', firstname: '', lastname: '', contactNumber: '' });
+const CustomerInsert=()=>{
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setCustomer({ ...customer, [name]: value });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const newCustomer = { id: Date.now(), ...customer };
-        CustomerService.register(newCustomer);
-        navigate("/customers");
-    };
-
-    return (
-        <div>
-            <h2>Create New Customer</h2>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Email:
-                    <input type="email" name="Email" value={customer.Email} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    First Name:
-                    <input type="text" name="firstname" value={customer.firstname} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    Last Name:
-                    <input type="text" name="lastname" value={customer.lastname} onChange={handleChange} />
-                </label>
-                <br />
-                <label>
-                    Contact Number:
-                    <input type="text" name="contactNumber" value={customer.contactNumber} onChange={handleChange} />
-                </label>
-                <br />
-                <button type="submit">Create</button>
-            </form>
-        </div>
+    
+    const [customer, setCustomer]=useState(
+        {   id: '', email: '', 
+            firstname:"", lastname:"",
+            contactnumber:""
+        },
     );
-}
 
-export default CreateCustomer;
+    const handleChange=(e)=>{
+        //console.log( "text change event ");
+        //console.log(e.target);
+        const {name, value}=e.target;
+        setCustomer((prevCustomer)=>(
+            {
+                ...prevCustomer, [name]:value
+            }));
+    }
+
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        console.log( "Form submit button clicked");
+        console.log(customer);
+        CustomerService.register(customer);
+        console.log(CustomerService.getAll());
+    }
+    return(
+        <>
+        <h3>Insert New Customer</h3>
+          
+          <div>
+            <form onSubmit={handleSubmit}>
+                <table>
+                    <tr>
+                        <td>Id:</td>
+                        <td> <input type="text" id="id"  name="id" value={customer.id} onChange={handleChange}/></td>
+                    </tr>
+                    <tr>
+                        <td>First Name:</td>
+                        <td> <input type="text" id="firstname"  name="firstname" value={customer.firstname} onChange={handleChange} /></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name:</td>
+                        <td> <input type="text" id="lastname"  name="lastname" value={customer.lastname} onChange={handleChange}/></td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td> <input type="email" id="email"  name="email" value={customer.email} onChange={handleChange}/></td>
+                    </tr>
+                    <tr>
+                        <td>Contact Number:</td>
+                        <td> <input type="text" id="contactnumber"  name="contactnumber" value={customer.contactnumber} onChange={handleChange}/></td>
+                    </tr>
+                    <tr>
+                        <td>Action</td>
+                        <td><button type="submit">Insert</button></td>  
+                    </tr>
+                </table>
+            </form>   
+          </div>
+        </>
+    )
+};
+
+export default CustomerInsert;
