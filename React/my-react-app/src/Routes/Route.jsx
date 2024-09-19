@@ -44,6 +44,7 @@ const AppRoutes = () => (
             <Route path="customers/update/:id" element={ <CustomerUpdate/>}/>
             <Route path="customers/delete/:id" element={<CustomerDelete/>}/>
             <Route path="customers/insert" element={<CustomerInsert/>}/>
+            <Route path="customers/details/:id" element={<Customer/>}/>
     </Routes>
 );
 export default AppRoutes;
