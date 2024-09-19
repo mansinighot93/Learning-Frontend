@@ -57,82 +57,41 @@ const CustomerUpdate = () => {
                             <tr>
                                 <td>ID:</td>
                                 <td>
-                                    <input 
-                                        type="text" 
-                                        id="id"  
-                                        name="id" 
-                                        value={customer.id} 
-                                        disabled // Prevent changing the ID
-                                    />
+                                    <input type="text" id="id" name="id" value={customer.id} disabled />
                                 </td>
                             </tr>
                             <tr>
                                 <td>First Name:</td>
                                 <td>
-                                    <input 
-                                        type="text" 
-                                        id="firstname"  
-                                        name="firstname" 
-                                        value={customer.firstname} 
-                                        onChange={handleChange} 
-                                        required
-                                    />
+                                    <input type="text" id="firstname" name="firstname" value={customer.firstname} onChange={handleChange} required/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Last Name:</td>
                                 <td>
-                                    <input 
-                                        type="text" 
-                                        id="lastname"  
-                                        name="lastname" 
-                                        value={customer.lastname} 
-                                        onChange={handleChange} 
-                                        required
-                                    />
+                                    <input type="text" id="lastname" name="lastname" value={customer.lastname} onChange={handleChange} required/>
+                                        
                                 </td>
                             </tr>
                             <tr>
                                 <td>Email:</td>
                                 <td>
-                                    <input 
-                                        type="email" 
-                                        id="email"  
-                                        name="email" 
-                                        value={customer.email} 
-                                        onChange={handleChange} 
-                                        required
-                                    />
+                                    <input type="text" id="email" name="email" value={customer.email} onChange={handleChange} required/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Contact Number:</td>
                                 <td>
-                                    <input 
-                                        type="text" 
-                                        id="contactnumber"  
-                                        name="contactnumber" 
-                                        value={customer.contactnumber} 
-                                        onChange={handleChange}
-                                        required
-                                    />
+                                    <input type="text" id="contactnumber" name="contactnumber" value={customer.contactnumber} onChange={handleChange} required/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Password:</td>
                                 <td>
-                                    <input 
-                                        type="password" 
-                                        id="password"  
-                                        name="password" 
-                                        value={customer.password} 
-                                        onChange={handleChange}
-                                        required
-                                    />
+                                    <input type="text" id="password" name="password" value={customer.password} onChange={handleChange} required/>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Action</td>
                                 <td><button type="submit">Update</button></td>  
                             </tr>
                         </tbody>
