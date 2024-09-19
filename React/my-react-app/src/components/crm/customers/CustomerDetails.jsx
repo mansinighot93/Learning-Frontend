@@ -5,8 +5,7 @@ import { useParams } from "react-router-dom";
 
 const CustomerDetails = () => {
     const { id } = useParams(); // get customer ID from URL parameters
-    const [customer, setCustomer] = React.useState(null); // initial state as null
-
+    const [customer, setCustomer] = React.useState(null); 
     React.useEffect(() => {
         const fetchedCustomer = CustomerService.getCustomerById(parseInt(id));
         if (fetchedCustomer) {

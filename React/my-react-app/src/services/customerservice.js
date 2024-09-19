@@ -1,6 +1,4 @@
-// services/customerservice.js
 
-// Data
 let customers = [
     { id: 1, email: 'ravi.tambade@transflower.in', firstname: "Ravi", lastname: "Tambade", contactnumber: "9881735801", password: "password1" },
     { id: 2, email: 'shubhangi.tambade@transflower.in', firstname: "Shubhangi", lastname: "Tambade", contactnumber: "9881735801", password: "password2" },
