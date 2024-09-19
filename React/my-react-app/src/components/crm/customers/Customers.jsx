@@ -12,9 +12,9 @@ const Customers=()=>{
             <ul>
                 {
                     customers.map(customer=>(
-                        <li key ={customer.id}>{customer.firstname} <Link to={`/customers/insert/${customer.id}`} >Insert</Link> |
-                                                                     <Link to={`/customers/update/${customer.id}`} >Update</Link> |
-                                                                     <Link to={`/customers/delete/${customer.id}`} >Delete</Link>
+                        <li key ={customer.id}>{customer.firstname}<Link to={`/customers/insert/${customer.id}`}>Insert</Link> |
+                                                                    <Link to={`/customers/update/${customer.id}`}>Update</Link> |
+                                                                    <Link to={`/customers/delete/${customer.id}`}>Delete</Link>
                         </li>
                     ))
                 }

@@ -4,7 +4,7 @@ import CustomerService from "../../../services/customerservice";
  
 const Customer=()=>{
     const { id } = useParams();
-    const [customer,setcustomer] = useState({ id: 1, email: 'ravi.tambade@transflower.in',  firstname:"Ravi", lastname:"Tambade",contactnumber:"9881735801" });
+    const [customer,setcustomer] = useState({ id: 1, email: 'ravi.tambade@transflower.in',firstname:"Ravi", lastname:"Tambade",contactnumber:"9881735801" });
    
  
     useEffect(() => {
