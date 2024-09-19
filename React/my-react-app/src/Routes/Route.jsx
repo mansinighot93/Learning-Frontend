@@ -15,7 +15,7 @@ import Bi from "../components/charts/Bi";
 import Profile from "../components/crm/Profile";
 import Settings from "../components/crm/Settings";
 import Customers from "../components/crm/customers/Customers";
-import Customer from "../components/crm/customers/Customer";
+import Customer from "../components/crm/customers/Customers";
 import CustomerDelete from "../components/crm/customers/CustomerDelete";
 import CustomerInsert from "../components/crm/customers/CustomerInsert";
 import CustomerUpdate from "../components/crm/customers/CustomerUpdate";

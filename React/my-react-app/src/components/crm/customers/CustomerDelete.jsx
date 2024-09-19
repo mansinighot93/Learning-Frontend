@@ -1,6 +1,8 @@
 const CustomerDelete=()=>{
     return(
-        <h2>Delete Existing Customer Details</h2>
+        <div>
+            <h2>Delete Existing Customer Details</h2>
+        </div>
     )
 };
 export default CustomerDelete;

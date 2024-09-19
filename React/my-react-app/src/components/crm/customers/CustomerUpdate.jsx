@@ -1,6 +1,8 @@
 const CustomerUpdate=()=>{
     return(
-        <h2>Update Existing Customer Details</h2>
+        <div>
+            <h3>Update Existing Customer Details</h3>
+        </div>
     )
 };
 export default CustomerUpdate;
