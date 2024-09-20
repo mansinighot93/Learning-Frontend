@@ -30,7 +30,6 @@ const CustomerUpdate = () => {
         e.preventDefault();
         try {
             CustomerService.update(customer);
-            alert("Customer updated successfully.");
             navigate("/customers"); // Navigate to customer list or appropriate page
         } catch (error) {
             setError(error.message);

@@ -22,7 +22,6 @@ const CustomerDelete = () => {
     const handleYes = () => {
         try {
             CustomerService.remove(parseInt(id));
-            alert("Customer deleted successfully.");
             navigate("/customers"); 
         } catch (err) {
             setError(err.message);
