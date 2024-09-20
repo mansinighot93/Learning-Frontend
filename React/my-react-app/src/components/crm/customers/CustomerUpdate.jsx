@@ -15,15 +15,14 @@ const CustomerUpdate = () => {
         if (existingCustomer) {
             setCustomer(existingCustomer);
         } else {
-            setError(`Customer with ID ${id} not found.`);
+            setError('Customer with ID ${id} not found.');
         }
     }, [id]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setCustomer(prevCustomer => ({
-            ...prevCustomer,
-            [name]: value
+            ...prevCustomer,[name]: value
         }));
     }
 
@@ -33,8 +32,8 @@ const CustomerUpdate = () => {
             CustomerService.update(customer);
             alert("Customer updated successfully.");
             navigate("/customers"); // Navigate to customer list or appropriate page
-        } catch (err) {
-            setError(err.message);
+        } catch (error) {
+            setError(error.message);
         }
     }
 
