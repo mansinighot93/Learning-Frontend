@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import CustomerService from "../../../services/customerservice";
+import CustomerService from "./../../services/customerservice";
 
-const Storage = () => {
+const Storage = ({id}) => {
   const [userData, setUserData] = useState({id: '',email: '',firstName: '',lastName: '',password: '',location: ''});
 
   // Load data from local storage on component mount
@@ -47,7 +47,7 @@ const Storage = () => {
             <td><input type="text" name="email" value={userData.email} onChange={handleChange}/></td>
         </tr>
         <tr>
-            <td><input type="text" name="location" value={userData.location} onChange={handleChange}/></td>
+            <td><input type="text" name="contactnumber" value={userData.contactnumber} onChange={handleChange}/></td>
         </tr>
         
         

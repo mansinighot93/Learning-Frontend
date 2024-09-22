@@ -10,6 +10,7 @@ const Navbar = () => (
         <Link to="/bi">Buissness Intelligence</Link>  |
         <Link to="/dashboard">Dashboard</Link>   |
         <Link to="/login">Login</Link>   |
+        <Link to="/storage">Storage</Link>   |
         <Link to="/register">Register</Link>
     </nav>
 );
