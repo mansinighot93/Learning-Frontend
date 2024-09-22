@@ -32,9 +32,9 @@ const Storage = ({id}) => {
   return (
     <div>
       <h2>User Data:</h2>
-      <pre>{JSON.stringify(userData, null, 2)}</pre>
+      {JSON.stringify(userData, null, 2)}
+      
     </div>
   );
 };
-
 export default Storage;
