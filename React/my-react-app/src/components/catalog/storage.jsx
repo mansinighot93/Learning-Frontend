@@ -1,29 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import CustomerService from "../../../services/customerservice";
 
-const UserForm = () => {
-  const [userData, setUserData] = useState({
-    id: '',
-    email: '',
-    firstName: '',
-    lastName: '',
-    password: '',
-    location: ''
-  });
+const Storage = () => {
+  const [userData, setUserData] = useState({id: '',email: '',firstName: '',lastName: '',password: '',location: ''});
 
   // Load data from local storage on component mount
   useEffect(() => {
-    const storedUserData = getData('userData');
-    if (storedUserData) {
-      setUserData(storedUserData);
+    const fetchedCustomer = CustomerService.getCustomerById(parseInt(id));
+    if (fetchedCustomer) {
+        setCustomer(fetchedCustomer);
     }
-  }, []);
+}, [id]);
 
   // Save user data to local storage when it changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserData((prevData) => ({
-      ...prevData,
-      [name]: value,
+      ...prevData,[name]: value,
     }));
     saveData('userData', { ...userData, [name]: value });
   };
@@ -41,48 +34,23 @@ const UserForm = () => {
     <div>
       <h1>User Form</h1>
       <form>
-        <input
-          type="text"
-          name="id"
-          value={userData.id}
-          onChange={handleChange}
-          placeholder="ID"
-        />
-        <input
-          type="email"
-          name="email"
-          value={userData.email}
-          onChange={handleChange}
-          placeholder="Email"
-        />
-        <input
-          type="text"
-          name="firstName"
-          value={userData.firstName}
-          onChange={handleChange}
-          placeholder="First Name"
-        />
-        <input
-          type="text"
-          name="lastName"
-          value={userData.lastName}
-          onChange={handleChange}
-          placeholder="Last Name"
-        />
-        <input
-          type="password"
-          name="password"
-          value={userData.password}
-          onChange={handleChange}
-          placeholder="Password"
-        />
-        <input
-          type="text"
-          name="location"
-          value={userData.location}
-          onChange={handleChange}
-          placeholder="Location"
-        />
+        <tr>
+            <td><input type="text" name="id" value={userData.id} onChange={handleChange}/></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="firstname" value={userData.firstname} onChange={handleChange}/></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="lastname" value={userData.lastname} onChange={handleChange}/></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="email" value={userData.email} onChange={handleChange}/></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="location" value={userData.location} onChange={handleChange}/></td>
+        </tr>
+        
+        
       </form>
       <h2>User Data:</h2>
       <pre>{JSON.stringify(userData, null, 2)}</pre>
@@ -90,4 +58,4 @@ const UserForm = () => {
   );
 };
 
-export default UserForm;
+export default Storage;
