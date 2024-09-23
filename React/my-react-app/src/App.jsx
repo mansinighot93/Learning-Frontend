@@ -33,19 +33,15 @@ function App() {
 export default App;*/
 
 import React, { useEffect, useState } from 'react';
-import EventEmitter from 'event';
- 
+import EventEmitter from 'eventemitter3';
  
 const emitter= new EventEmitter();
  
 function Publisher(){
- 
   const [text,setText]=useState('');
- 
   const handleChange=(event)=>{
     setText(event.target.value);
   }
- 
   const handleClick=(event)=>{
     emitter.emit('update', text);
   };
@@ -97,7 +93,6 @@ function App() {
             <td></td>
           </tr>
           <tr>
-            <td><Subscriber/></td>
             <td> <Subscriber/></td>
           </tr>
         </table>
