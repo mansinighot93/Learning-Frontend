@@ -21,12 +21,22 @@ export function CartProvider({ children }) {
 
   // Remove item from cart
   const removeItem = (itemId) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
+    //setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
+    setCart((prevCart)=>{
+      const index=prevCart.findIndex((item)=>item.id===itemId);
+      if(index!==-1){
+        return [
+          ...prevCart.slice(0,index),
+          ...prevCart.slice(index+1)
+        ];
+      }
+      return prevCart;
+    })
   };
 
   // Get total price
   const getTotalPrice = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cart.reduce((total, item) => total + item.price * item.quantity,0);
   };
 
   //Middleware

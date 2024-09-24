@@ -26,7 +26,7 @@ function CartContainer() {
               </table>
               }
             </td>
-            <td> <Cart /></td>
+            <td> <Cart/></td>
           </tr>
         </table>
       </div>

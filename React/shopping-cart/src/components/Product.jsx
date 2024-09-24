@@ -5,13 +5,13 @@ function Product({ id, name, image, price }) {
   const { addItem } = useContext(CartContext);
 
   const handleAddToCart = () => {
-    addItem({ id, name, price, quantity: 1 });
+    addItem({ id, name, price, quantity:1});
   };
 
   return (
     <div>
       <tr>
-        <td><img src={image} widht="100" height="100"/></td>
+        <td><img src={image} widht="150" height="150"/></td>
       </tr>
       <tr>
         <td><h4>{name}</h4></td>
