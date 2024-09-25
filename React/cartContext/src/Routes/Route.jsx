@@ -5,11 +5,11 @@ import CustomerDetails from "../components/crm/CustomerDetails";
 import CustomerUpdate from "../components/crm/CustomerUpdate";
 import CustomerInsert from "../components/crm/CustomerInsert";
 import Customers from "../components/crm/Customers";
-import Customer from "../components/crm/Customer";
+import CustomerForm from "../components/crm/CustomerForm";
 
 const AppRoutes = () => (
     <Routes>
-        <Route path="customer" element={<Customer/>}/>
+        <Route path="form" element={<CustomerForm/>}/>
         <Route path="customers" element={<Customers/>}/>
                 <Route path="/customers/details/:id" element={<CustomerDetails />} />
                 <Route path="/customers/insert" element={<CustomerInsert />} />

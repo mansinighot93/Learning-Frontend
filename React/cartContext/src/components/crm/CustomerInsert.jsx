@@ -13,7 +13,9 @@ const CreateCustomer = () => {
     };
 
     const handleSubmit = (newCustomer) => {
-        addCustomer(newCustomer);
+        newCustomer.preventDefault();
+        //setCustomer((prev) => [...prev,{ id: Date.now(), ...customer}]);
+        addCustomer(customer);
         navigate("/customers");
     };
 

@@ -18,8 +18,9 @@ export function CustomerProvider({ children }) {
   }, []); 
 
   const addCustomer = (customer) => {
-    CustomerService.insert(customer); 
-    setCustomers([...customers, { ...customer, id: customers.length + 1 }]);
+    CustomerService.insert(customer);
+    setCustomers((prev) => [...prev,{ id: Date.now(), ...customer}]); 
+    //setCustomers([...customers, { ...customer, id: customers.length + 1 }]);
   };
 
   const updateCustomer = (updatedCustomer) => {

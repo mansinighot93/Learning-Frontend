@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
-const Customer = ({ onSubmit, initial = {} }) => {
-  const [customer, setCustomer] = useState({firstname: '',lastname: '',email: '',contactnumber: '',...initial});
+const CustomerForm = ({ onSubmit, initial = {} }) => {
+  const [customer, setCustomer] = useState({ initial });
+
+  useEffect(() => {
+    setCustomer(initial);
+  }, [initial]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCustomer({
-      ...customer,
-      [name]: value
-    });
+    setCustomer((prev) => ({...prev, [name]:value }));
+    
   };
 
   const handleSubmit = (e) => {
@@ -36,4 +38,4 @@ const Customer = ({ onSubmit, initial = {} }) => {
     );
 };
 
-export default Customer;
+export default CustomerForm;
