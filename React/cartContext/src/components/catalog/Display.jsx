@@ -3,19 +3,19 @@ import CartContext from '../context/CartContext';
 
 //state less component
 
-function Cart() {
-  const { cart, removeItem, getTotalPrice } = useContext(CartContext);
+function Display() {
+  const { display, removeItem, getTotalPrice } = useContext(CartContext);
   return (
     <div>
-      <h2>My  Shopping Cart</h2>
+      <h2>Cutomers Details</h2>
       <hr/>
     
-      {cart.length === 0 ? (<p></p>) : (
+      {display.length === 0 ? (<p></p>) : (
         <ul>
-          {cart.map((item) => (
+          {display.map((customer) => (
                     <ul>
-                      <li key={item.id}>
-                        {item.name}:-  ₹{item.price} x {item.quantity}
+                      <li key={customer.id}>
+                        {customer.firstname} {customer.lastname} {customer.email} {customer.contactnumber}
                         <button onClick={() => removeItem(item.id)}>Remove</button>
                       </li>
                       </ul>
@@ -23,9 +23,8 @@ function Cart() {
         </ul>
       )}
       <hr/>
-      <h3>Total Price: ${getTotalPrice().toFixed(2)}</h3>
     </div>
   );
 }
 
-export default Cart;
+export default Display();

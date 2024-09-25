@@ -41,9 +41,9 @@ export function CartProvider({ children }) {
 
   //Middleware
   return (
-    <CartContext.CartProvider value={{ cart, addItem, removeItem, getTotalPrice }}>
+    <CartContext.Provider value={{ cart, addItem, removeItem, getTotalPrice }}>
       {children}
-    </CartContext.CartProvider>
+    </CartContext.Provider>
   );
 }
 

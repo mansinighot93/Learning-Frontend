@@ -14,10 +14,10 @@ function Product({ id, name, image, price }) {
         <td><img src={image} widht="150" height="150"/></td>
       </tr>
       <tr>
-        <td><h4>{name}</h4></td>
+        <td><h4>Name:-{name}</h4></td>
       </tr>
       <tr>
-        <td><p> ₹{price}</p></td>
+        <td><h4></h4><p>₹{price}</p></td>
       </tr>
       <tr>
         <td><button onClick={handleAddToCart}>Add to Cart</button></td>

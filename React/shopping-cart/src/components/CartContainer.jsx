@@ -12,7 +12,7 @@ function CartContainer() {
 
     <CartProvider>
       <div>
-        <h2> Todays Flowers</h2>
+        <h2> Today's Fresh Flowers</h2>
         <table>
           <tr>
             <td> {
