@@ -1,15 +1,18 @@
-import {BrowserRouter } from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
+import { CustomerProvider } from '../context/CustomerContext';
 import Navbar from "./Navbar";
-import AppRoutes from "../Routes/Route";
+import AppRoutes from "../routes/route";
 function Container() {
     return (
       <div>
         <h2>Cutomer Services</h2>
-        <BrowserRouter>
-            <Navbar/>
-            <hr/>
-            <AppRoutes/>
-        </BrowserRouter>
+        <CustomerProvider>
+            <Router>
+                <Navbar/>
+                <hr/>
+                <AppRoutes />
+            </Router>
+        </CustomerProvider>
       </div>
     );
   }
