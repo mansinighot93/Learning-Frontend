@@ -1,45 +1,23 @@
 // components/CustomerDelete.js
 
-import { useState, useEffect } from "react";
+import { useContext} from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import CustomerService from "../../services/customerservice";
+import CustomerContext from "../../context/CustomerContext";
 
 const CustomerDelete = () => {
+    const {deleteCustomer,customers} =useContext(CustomerContext);
     const { id } = useParams();
     const navigate = useNavigate();
-    const [customer, setCustomer] = useState(null);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const existingCustomer = CustomerService.getCustomerById(parseInt(id));
-        if (existingCustomer) {
-            setCustomer(existingCustomer);
-        } else {
-            setError(`Customer with ID ${id} not found.`);
-        }
-    }, [id]);
+    
+    const customer =customers.find((c)=>c.id===parseInt(id));
 
     const handleYes = () => {
-        try {
-            CustomerService.remove(parseInt(id));
+            deleteCustomer(customer.id);
             navigate("/customers"); 
-        } catch (err) {
-            setError(err.message);
-        }
     }
-
     const handleNo = () => {
         navigate("/customers");
     }
-
-    if (error) {
-        return <p>{error}</p>;
-    }
-
-    if (!customer) {
-        return <p>Loading...</p>;
-    }
-
     return (
         <>
             <h3>Customer Details</h3>

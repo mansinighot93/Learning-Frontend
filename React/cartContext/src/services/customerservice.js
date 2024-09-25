@@ -10,10 +10,12 @@ let customers = [
     { id: 8, email: 'seema.patil@gmail.com', firstname: "Seema", lastname: "Patil", contactnumber: "9881735801", password: "password8" },
 ];
 
+
+
 // Service
 const CustomerService = {
     // Validate customer by email and password
-    validate(email, password) {
+    validate(email, password) { 
         const customer = customers.find(
             (theCustomer) => theCustomer.email === email && theCustomer.password === password
         );
@@ -21,7 +23,7 @@ const CustomerService = {
     },
 
     // Get all customers
-    getAll() {    
+    getAll() { 
         return customers;
     },
 
@@ -31,12 +33,7 @@ const CustomerService = {
     },
 
     // Register a new customer
-    register(theCustomer) {
-        // Ensure the customer ID is unique
-        const exists = customers.some(customer => customer.id === theCustomer.id);
-        if (exists) {
-            throw new Error(`Customer with ID ${theCustomer.id} already exists.`);
-        }
+    insert(theCustomer) {
         customers.push(theCustomer);
     },
 

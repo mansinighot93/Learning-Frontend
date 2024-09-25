@@ -5,6 +5,7 @@ import CustomerDetails from "../components/crm/CustomerDetails";
 import CustomerUpdate from "../components/crm/CustomerUpdate";
 import CustomerInsert from "../components/crm/CustomerInsert";
 import Customers from "../components/crm/Customers";
+
 const AppRoutes = () => (
     <Routes>
         <Route path="customers" element={<Customers/>}/>

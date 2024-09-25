@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import CustomerService from "../../services/customerservice";
+import {useContext, useState } from "react";
+import CustomerContext from "../../context/CustomerContext";
 
 const CreateCustomer = () => {
+    const {addCustomer}=useContext(CustomerContext);
     const navigate = useNavigate();
     const [customer, setCustomer] = useState({ Email: '', firstname: '', lastname: '', contactNumber: '' });
 
@@ -11,10 +12,8 @@ const CreateCustomer = () => {
         setCustomer({ ...customer, [name]: value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const newCustomer = { id: Date.now(), ...customer };
-        CustomerService.register(newCustomer);
+    const handleSubmit = (newCustomer) => {
+        addCustomer(newCustomer);
         navigate("/customers");
     };
 

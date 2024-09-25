@@ -1,101 +1,35 @@
 // components/CustomerUpdate.js
 
-import { useState, useEffect } from "react";
+import { useContext,useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import CustomerService from "../../services/customerservice";
+import Customer from "./Customer";
+import CustomerContext from "../../context/CustomerContext";
 
 const CustomerUpdate = () => {
+    const { customers, updateCustomer } = useContext(CustomerContext);
     const { id } = useParams();
     const navigate = useNavigate();
-    const [customer, setCustomer] = useState(null);
-    const [error, setError] = useState(null);
+    const [initial, setInitial] = useState(null);
 
     useEffect(() => {
-        const existingCustomer = CustomerService.getCustomerById(parseInt(id));
-        if (existingCustomer) {
-            setCustomer(existingCustomer);
-        } else {
-            setError('Customer with ID ${id} not found.');
+        const custUpdate=customers.find((c)=>c.id===parseInt(id));
+        if(custUpdate){
+            setInitial(custUpdate);
         }
-    }, [id]);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setCustomer(prevCustomer => ({
-            ...prevCustomer,[name]: value
-        }));
-    }
+    }, [id,customers]);
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        try {
-            CustomerService.update(customer);
-            navigate("/customers"); // Navigate to customer list or appropriate page
-        } catch (error) {
-            setError(error.message);
-        }
+        updateCustomer({...updateCustomer,id:parseInt(id)});
+        navigate('/');
     }
-
-    if (error) {
-        return <p>{error}</p>;
-    }
-
-    if (!customer) {
-        return <p>Loading...</p>;
-    }
-
     return (
         <>
             <h3>Update Existing Customer</h3>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>ID:</td>
-                                <td>
-                                    <input type="text" id="id" name="id" value={customer.id} disabled />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>First Name:</td>
-                                <td>
-                                    <input type="text" id="firstname" name="firstname" value={customer.firstname} onChange={handleChange} required/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Last Name:</td>
-                                <td>
-                                    <input type="text" id="lastname" name="lastname" value={customer.lastname} onChange={handleChange} required/>
-                                        
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Email:</td>
-                                <td>
-                                    <input type="text" id="email" name="email" value={customer.email} onChange={handleChange} required/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Contact Number:</td>
-                                <td>
-                                    <input type="text" id="contactnumber" name="contactnumber" value={customer.contactnumber} onChange={handleChange} required/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Password:</td>
-                                <td>
-                                    <input type="text" id="password" name="password" value={customer.password} onChange={handleChange} required/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><button type="submit">Update</button></td>  
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>   
-            </div>
+            <h2>Update Customer</h2>
+                {initial ? (
+                    <Customer onSubmit={handleSubmit} initial={initial} />
+                ) : (<p>Loading customer data...</p>
+            )}
         </>
     )
 };

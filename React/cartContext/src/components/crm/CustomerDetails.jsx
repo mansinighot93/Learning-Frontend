@@ -1,23 +1,12 @@
 // CustomerDetails.jsx
-import React from 'react';
-import CustomerService from "../../services/customerservice";
+import {useContext} from 'react';
+import CustomerContext from '../../context/CustomerContext';
 import { useParams } from "react-router-dom";
 
 const CustomerDetails = () => {
-    const { id } = useParams(); // get customer ID from URL parameters
-    const [customer, setCustomer] = React.useState(null); 
-    
-    React.useEffect(() => {
-        const fetchedCustomer = CustomerService.getCustomerById(parseInt(id));
-        if (fetchedCustomer) {
-            setCustomer(fetchedCustomer);
-        }
-    }, [id]);
-
-    if (!customer) {
-        return <p>Loading customer details...</p>;
-    }
-
+    const { customers}=useContext(CustomerContext);
+    const { id } = useParams();
+    const customer = customers.find((c)=>c.id===parseInt(id));
     return (
         <>
             <h3>Customer Details</h3>

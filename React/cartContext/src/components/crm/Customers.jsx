@@ -1,30 +1,28 @@
 import { Link } from "react-router-dom";
-import CustomerService from "../../services/customerservice";
+import CustomerContext from "../../context/CustomerContext";
+import { useContext } from "react";
  
  
 const Customers=()=>{
  
-    const customers= CustomerService.getAll();
+    const {customers}= useContext(CustomerContext);
  
     return(
         <>
-        <table border="2">
         <h3>Customer's Information</h3>
             <ul>
                 {
                     customers.map(customer=>(
-                        <li key ={customer.id}>{customer.firstname} {customer.lastname}   <Link to={`/customers/details/${customer.id}`} >Details</Link> | |
-                                                                    <Link to={`/customers/insert`}>Insert</Link> |  |
+                        <li key ={customer.id}>{customer.firstname} {customer.lastname}  
+                        <tr>
+                         <Link to={`/customers/details/${customer.id}`} >Details</Link> | |
                                                                     <Link to={`/customers/update/${customer.id}`}>Update</Link> |  |
-                                                                    <Link to={`/customers/delete/${customer.id}`}>Delete</Link> 
-                                                                    
-                                         
+                                                                    <Link to={`/customers/delete/${customer.id}`}>Delete</Link>                                
+                        </tr>           
                         </li>
                     ))
                 }
-               
-             </ul>
-            </table>
+            </ul>
         </>
     )
 };

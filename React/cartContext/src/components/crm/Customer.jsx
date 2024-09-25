@@ -1,27 +1,36 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import CustomerService from "../../services/customerservice";
- 
-const Customer=()=>{
-    const { id } = useParams();
-    const [customer,setcustomer] = useState({ id: 1, email: 'ravi.tambade@transflower.in',firstname:"Ravi", lastname:"Tambade",contactnumber:"9881735801" });
-   
- 
-    useEffect(() => {
-        const existingcustomer =CustomerService.getCustomerById( parseInt(id));
-        if (existingcustomer) {
-            setcustomer(existingcustomer);
-        }
-    }, [id]);
+import { useState } from 'react';
 
-    return(
-        <>
-        <h3>Customer Details</h3>
-         <p> Name: {customer.firstname} {customer.lastname}</p>
-         <p>Email: {customer.email}</p>
-         <p>Contact Nubmer:{customer.contactnumber}</p>
-         <p>Location: {customer.location}</p>
-        </>
-    )
+const Customer = ({ onSubmit, initialData = {} }) => {
+  const [customer, setCustomer] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    contactNumber: '',
+    ...initialData
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCustomer({
+      ...customer,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(customer); 
+  };
+
+  return (
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="firstName" placeholder="First Name" value={customer.firstName} onChange={handleChange} required />
+        <input type="text" name="lastName" placeholder="Last Name" value={customer.lastName} onChange={handleChange} required />
+        <input type="email" name="email" placeholder="Email" value={customer.email} onChange={handleChange} required />
+        <input type="text" name="contactNumber" placeholder="Contact Number" value={customer.contactNumber} onChange={handleChange} required />
+        <button type="submit">Submit</button>
+      </form>
+    );
 };
+
 export default Customer;
