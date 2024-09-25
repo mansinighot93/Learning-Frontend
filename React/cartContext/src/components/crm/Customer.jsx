@@ -1,13 +1,7 @@
 import { useState } from 'react';
 
-const Customer = ({ onSubmit, initialData = {} }) => {
-  const [customer, setCustomer] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    contactNumber: '',
-    ...initialData
-  });
+const Customer = ({ onSubmit, initial = {} }) => {
+  const [customer, setCustomer] = useState({firstname: '',lastname: '',email: '',contactnumber: '',...initial});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,11 +18,20 @@ const Customer = ({ onSubmit, initialData = {} }) => {
 
   return (
       <form onSubmit={handleSubmit}>
-        <input type="text" name="firstName" placeholder="First Name" value={customer.firstName} onChange={handleChange} required />
-        <input type="text" name="lastName" placeholder="Last Name" value={customer.lastName} onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email" value={customer.email} onChange={handleChange} required />
-        <input type="text" name="contactNumber" placeholder="Contact Number" value={customer.contactNumber} onChange={handleChange} required />
-        <button type="submit">Submit</button>
+            <tr>
+                <td>First Name:-<input type="text" name="firstName"  value={customer.firstname} onChange={handleChange} required /></td>
+            </tr>
+            <tr>
+                <td>Last Name:- <input type="text" name="lastName"  value={customer.lastname} onChange={handleChange} required /></td>
+            </tr>
+            <tr>
+                <td>Email ID:- <input type="email" name="email" value={customer.email} onChange={handleChange} required /></td>
+            </tr>
+            <tr>
+                <td>Contact Number:- <input type="text" name="contactNumber"  value={customer.contactnumber} onChange={handleChange} required /></td>
+            </tr>
+            <br/>
+            <button type="submit">Submit</button>
       </form>
     );
 };

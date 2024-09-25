@@ -25,7 +25,6 @@ const CustomerUpdate = () => {
     return (
         <>
             <h3>Update Existing Customer</h3>
-            <h2>Update Customer</h2>
                 {initial ? (
                     <Customer onSubmit={handleSubmit} initial={initial} />
                 ) : (<p>Loading customer data...</p>
