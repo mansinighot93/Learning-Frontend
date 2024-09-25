@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import CustomerService from "../../../services/customerservice";
+import CustomerService from "../../services/customerservice";
  
 const Customer=()=>{
     const { id } = useParams();

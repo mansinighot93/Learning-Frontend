@@ -11,18 +11,18 @@ const CartContext = createContext();
 export function CartProvider({ children }) {
   //Step 3: Define global State
 
-  const [cart, setCart] = useState([]);
+  const [display, setDisplay] = useState([]);
   //Step 4:Define Reducers
 
   // Add item to cart
   const addItem = (item) => {
-    setCart((prevCart) => [...prevCart, item]);
+    setDisplay((prevCart) => [...prevCart, item]);
   };
 
   // Remove item from cart
   const removeItem = (itemId) => {
     //setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
-    setCart((prevCart)=>{
+    setDisplay((prevCart)=>{
       const index=prevCart.findIndex((item)=>item.id===itemId);
       if(index!==-1){
         return [
@@ -36,7 +36,7 @@ export function CartProvider({ children }) {
 
   // Get total price
   const getTotalPrice = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity,0);
+    return display.reduce((total, item) => total + item.price * item.quantity,0);
   };
 
   //Middleware

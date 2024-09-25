@@ -1,6 +1,6 @@
 // CustomerDetails.jsx
 import React from 'react';
-import CustomerService from "../../../services/customerservice";
+import CustomerService from '../../services/customerservice';
 import { useParams } from "react-router-dom";
 
 const CustomerDetails = () => {

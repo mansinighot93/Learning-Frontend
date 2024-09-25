@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import CustomerService from "../../../services/customerservice";
+import CustomerService from "../../services/customerservice";
 
 const CreateCustomer = () => {
     const navigate = useNavigate();

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import CustomerService from "../../../services/customerservice";
+import CustomerService from "../../services/customerservice";
  
  
 const Customers=()=>{

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import CartContext from '../context/CartContext';
+import CartContext from '../../context/CartContext';
 
 //state less component
 
@@ -27,4 +27,4 @@ function Display() {
   );
 }
 
-export default Display();
+export default Display;

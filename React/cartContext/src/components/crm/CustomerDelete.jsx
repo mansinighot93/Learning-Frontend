@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import CustomerService from "../../../services/customerservice";
+import CustomerService from "../../services/customerservice";
 
 const CustomerDelete = () => {
     const { id } = useParams();
@@ -21,7 +21,7 @@ const CustomerDelete = () => {
 
     const handleYes = () => {
         try {
-            CustomerService.remove(parseInt(id));
+            CustomerService.removeItem(parseInt(id));
             navigate("/customers"); 
         } catch (err) {
             setError(err.message);

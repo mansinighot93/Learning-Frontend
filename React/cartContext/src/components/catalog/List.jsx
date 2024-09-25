@@ -1,6 +1,6 @@
 import React from 'react';
-import Customers from './Customers';
-import { CartProvider } from '../context/CartContext';
+import Customers from '../crm/Customers';
+import { CartProvider } from '../../context/CartContext';
 import CustomerService from '../../services/customerservice';
 import Display from './Display';
 
