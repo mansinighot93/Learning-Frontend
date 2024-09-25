@@ -1,3 +1,5 @@
+// components/CustomerUpdate.js
+
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CustomerService from "../../services/customerservice";

@@ -2,8 +2,8 @@
 //import Register from "./components/Register";
 //import List from "./components/List";
 //import Counter from "./components/Counter";
-//import Container from "./components/Container";
-import App from "./App";
+import Container from "./components/Container";
+//import App from "./App";
 
 function Index(){
     return (
@@ -11,7 +11,7 @@ function Index(){
             <h2>TransFlower Learning Pvt.Ltd</h2>
             <hr/>
             
-            <App/>
+            <Container/>
         </div>
     );
 }
@@ -20,4 +20,4 @@ export default Index;
 //<Login/>
 //<Counter/>
 //<Register/>
-//<Container/>
+//

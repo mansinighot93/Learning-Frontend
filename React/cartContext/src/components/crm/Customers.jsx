@@ -8,14 +8,15 @@ const Customers=()=>{
  
     return(
         <>
-        <h3>Customer's Details:- </h3>
+        <table border="2">
+        <h3>Customer's Information</h3>
             <ul>
                 {
                     customers.map(customer=>(
-                        <li key ={customer.id}>{customer.firstname}{customer.lastname}<Link to={`/crm/details/${customer.id}`} >Details</Link>|
-                                                                    <Link to={`/crm/insert`}>Insert</Link> |
-                                                                    <Link to={`/crm/update/${customer.id}`}>Update</Link> |
-                                                                    <Link to={`/crm/delete/${customer.id}`}>Delete</Link> |
+                        <li key ={customer.id}>{customer.firstname} {customer.lastname}   <Link to={`/customers/details/${customer.id}`} >Details</Link> | |
+                                                                    <Link to={`/customers/insert`}>Insert</Link> |  |
+                                                                    <Link to={`/customers/update/${customer.id}`}>Update</Link> |  |
+                                                                    <Link to={`/customers/delete/${customer.id}`}>Delete</Link> 
                                                                     
                                          
                         </li>
@@ -23,6 +24,7 @@ const Customers=()=>{
                 }
                
              </ul>
+            </table>
         </>
     )
 };
