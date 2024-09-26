@@ -12,12 +12,15 @@ const CustomerDelete = () => {
     const customer =customers.find((c)=>c.id===parseInt(id));
 
     const handleYes = () => {
+        if(customer){
             deleteCustomer(customer.id);
             navigate("/customers"); 
-    }
+        }
+    };
     const handleNo = () => {
         navigate("/customers");
     }
+
     return (
         <>
             <h3>Customer Details</h3>

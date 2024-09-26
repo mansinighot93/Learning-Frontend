@@ -36,6 +36,8 @@ const CustomerUpdate = () => {
         }
     };
     if (error) return <p style={{ color: 'red' }}>{error}</p>;
+    if(!customer) return <p>Loading......</p>;
+    
     return (
         <>
             <h3>Update Existing Customer</h3>
@@ -72,12 +74,6 @@ const CustomerUpdate = () => {
                                 <td>Contact Number:</td>
                                 <td>
                                     <input type="text" id="contactnumber" name="contactnumber" value={customer.contactnumber} onChange={handleChange} required/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Password:</td>
-                                <td>
-                                    <input type="text" id="password" name="password" value={customer.password} onChange={handleChange} required/>
                                 </td>
                             </tr>
                             <tr>

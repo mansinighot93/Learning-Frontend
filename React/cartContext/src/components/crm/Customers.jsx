@@ -10,6 +10,7 @@ const Customers=()=>{
     return(
         <>
         <h3>Customer's Information</h3>
+        <Link to={`/customers/insert`}>Add New Customer</Link>
             <ul>
                 {
                     customers.map(customer=>(

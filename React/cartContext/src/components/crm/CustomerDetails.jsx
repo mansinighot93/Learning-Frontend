@@ -7,6 +7,7 @@ const CustomerDetails = () => {
     const { customers}=useContext(CustomerContext);
     const { id } = useParams();
     const customer = customers.find((c)=>c.id===parseInt(id));
+
     return (
         <>
             <h3>Customer Details</h3>
