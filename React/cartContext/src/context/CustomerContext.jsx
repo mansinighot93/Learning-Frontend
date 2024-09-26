@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import CustomerService from '../services/customerservice';
+import CustomerService from "../services/customerservice";
 
 // Step 1: Create context
 const CustomerContext = createContext();
@@ -9,29 +9,24 @@ export function CustomerProvider({ children }) {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
-    const fetchCustomers = () => {
-      const initialCustomers = CustomerService.getAll();
-      setCustomers(initialCustomers);
-    };
-
-    fetchCustomers();
-  }, []); 
+    setCustomers(CustomerService.getCustomers());
+  }, []);
 
   const addCustomer = (customer) => {
-    CustomerService.insert(customer);
-    setCustomers((prev) => [...prev,{ id: Date.now(), ...customer}]); 
-    //setCustomers([...customers, { ...customer, id: customers.length + 1 }]);
+    CustomerService.addCustomer(customer);
+    setCustomers(CustomerService.getCustomers());
   };
 
-  const updateCustomer = (updatedCustomer) => {
-    CustomerService.update(updatedCustomer);
-    setCustomers(customers.map(c => (c.id === updatedCustomer.id ? updatedCustomer : c)));
+  const updateCustomer = (customer) => {
+    CustomerService.updateCustomer(customer);
+    setCustomers(CustomerService.getCustomers());
   };
 
   const deleteCustomer = (id) => {
-    CustomerService.remove(id); 
-    setCustomers(customers.filter(customer => customer.id !== id));
+    CustomerService.deleteCustomer(id);
+    setCustomers(CustomerService.getCustomers());
   };
+
 
   return (
     <CustomerContext.Provider value={{ customers, addCustomer, updateCustomer, deleteCustomer }}>

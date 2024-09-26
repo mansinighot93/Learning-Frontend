@@ -10,47 +10,42 @@ let customers = [
     { id: 8, email: 'seema.patil@gmail.com', firstname: "Seema", lastname: "Patil", contactnumber: "9881735801", password: "password8" },
 ];
 
-
+const Customer = 'customers';
 
 // Service
 const CustomerService = {
-    // Validate customer by email and password
-    validate(email, password) { 
-        const customer = customers.find(
-            (theCustomer) => theCustomer.email === email && theCustomer.password === password
-        );
-        return customer !== undefined;
-    },
-
     // Get all customers
-    getAll() { 
-        return customers;
-    },
-
+    getCustomers: () => {
+        const customers = localStorage.getItem(Customer);
+        return customers ? JSON.parse(customers) : [];
+      },
     // Get customer by ID
-    getCustomerById(id) {
+    getCustomerById: (id) => {
+        const customers = CustomerService.getCustomers();
         return customers.find(customer => customer.id === id);
-    },
-
+      },
     // Register a new customer
-    insert(theCustomer) {
-        customers.push(theCustomer);
-    },
+    addCustomer: (customer) => {
+        const customers = CustomerService.getCustomers();
+        customers.push(customer);
+        localStorage.setItem(Customer, JSON.stringify(customers));
+      },
 
     // Update existing customer
-    update(theCustomer) {
-        const index = customers.findIndex(customer => customer.id === theCustomer.id);
-        if (index !== -1) {
-            customers[index] = theCustomer;
-        } else {
-            throw new Error(`Customer with ID ${theCustomer.id} not found.`);
-        }
-    },
+    updateCustomer: (updatedCustomer) => {
+        let customers = CustomerService.getCustomers();
+        customers = customers.map(customer =>
+          customer.id === updatedCustomer.id ? updatedCustomer : customer
+        );
+        localStorage.setItem(Customer, JSON.stringify(customers));
+      },
 
     // Remove customer by ID
-    remove(id) {
+    deleteCustomer: (id) => {
+        let customers = CustomerService.getCustomers();
         customers = customers.filter(customer => customer.id !== id);
-    }
-}
+        localStorage.setItem(Customer, JSON.stringify(customers));
+      }
+};
 
 export default CustomerService;

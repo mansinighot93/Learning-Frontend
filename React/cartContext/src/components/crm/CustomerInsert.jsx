@@ -5,19 +5,17 @@ import CustomerContext from "../../context/CustomerContext";
 const CreateCustomer = () => {
     const {addCustomer}=useContext(CustomerContext);
     const navigate = useNavigate();
-    const [customer, setCustomer] = useState({ Email: '', firstname: '', lastname: '', contactNumber: '' });
+    const [customer, setCustomer] = useState({Email: '', firstname: '', lastname: '', contactNumber: '' });
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setCustomer({ ...customer, [name]: value });
+        setCustomer({ ...customer, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (newCustomer) => {
-        newCustomer.preventDefault();
-        //setCustomer((prev) => [...prev,{ id: Date.now(), ...customer}]);
-        addCustomer(customer);
-        navigate("/customers");
-    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addCustomer({ ...customer, id: Date.now() });
+        navigate('/customers');
+      };
 
     return (
         <div>

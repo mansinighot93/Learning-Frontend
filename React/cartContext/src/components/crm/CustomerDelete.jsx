@@ -2,24 +2,21 @@
 
 import { useContext} from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import CustomerContext from "../../context/CustomerContext";
+import { CustomerContext } from "../../context/CustomerContext";
 
 const CustomerDelete = () => {
-    const {deleteCustomer,customers} =useContext(CustomerContext);
+    const { deleteCustomer } = useContext(CustomerContext);
     const { id } = useParams();
     const navigate = useNavigate();
-    
-    const customer =customers.find((c)=>c.id===parseInt(id));
-
+  
     const handleYes = () => {
-        if(customer){
-            deleteCustomer(customer.id);
-            navigate("/customers"); 
-        }
+      deleteCustomer(parseInt(id));
+      navigate('/customers');
     };
+
     const handleNo = () => {
-        navigate("/customers");
-    }
+        navigate('/customers');
+    };
 
     return (
         <>

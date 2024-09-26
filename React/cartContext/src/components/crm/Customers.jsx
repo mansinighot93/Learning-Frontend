@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import CustomerContext from "../../context/CustomerContext";
+import { CustomerContext } from "../../context/CustomerContext";
 import { useContext } from "react";
  
  
@@ -14,7 +14,7 @@ const Customers=()=>{
             <ul>
                 {
                     customers.map(customer=>(
-                        <li key ={customer.id}>{customer.firstname} {customer.lastname}  
+                        <li key ={customer.id}> Customer = {customer.firstname} {customer.lastname}  
                         <tr>
                          <Link to={`/customers/details/${customer.id}`} >Details</Link> | |
                                                                     <Link to={`/customers/update/${customer.id}`}>Update</Link> |  |
@@ -25,6 +25,6 @@ const Customers=()=>{
                 }
             </ul>
         </>
-    )
+    );
 };
 export default Customers;

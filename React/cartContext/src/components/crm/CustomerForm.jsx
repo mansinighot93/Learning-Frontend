@@ -1,41 +1,25 @@
-import { useState,useEffect } from 'react';
+// src/components/Customer.jsx
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { CustomerContext } from "../../context/CustomerContext";
 
-const CustomerForm = ({ onSubmit, initial = {} }) => {
-  const [customer, setCustomer] = useState({ initial });
+const CustomerForm = () => {
+  const { customers } = useContext(CustomerContext);
+  const { id } = useParams();
+  const customer = customers.find(c => c.id === parseInt(id));
 
-  useEffect(() => {
-    setCustomer(initial);
-  }, [initial]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setCustomer((prev) => ({...prev, [name]:value }));
-    
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(customer); 
-  };
+  if (!customer) {
+    return <h2>Customer not found</h2>;
+  }
 
   return (
-      <form onSubmit={handleSubmit}>
-            <tr>
-                <td>First Name:-<input type="text" name="firstName"  value={customer.firstname} onChange={handleChange} required /></td>
-            </tr>
-            <tr>
-                <td>Last Name:- <input type="text" name="lastName"  value={customer.lastname} onChange={handleChange} required /></td>
-            </tr>
-            <tr>
-                <td>Email ID:- <input type="email" name="email" value={customer.email} onChange={handleChange} required /></td>
-            </tr>
-            <tr>
-                <td>Contact Number:- <input type="text" name="contactNumber"  value={customer.contactnumber} onChange={handleChange} required /></td>
-            </tr>
-            <br/>
-            <button type="submit">Submit</button>
-      </form>
-    );
+    <div>
+      <h2>Customer Details</h2>
+      <p>First Name:{customer.firstName}</p>
+      <p>Last Name:{customer.lastName}</p>
+      <p>Email:{customer.email}</p>
+      <p>Contact Number:{customer.contactnumber}</p>
+    </div>
+  );
 };
-
 export default CustomerForm;

@@ -9,7 +9,7 @@ import CustomerForm from "../components/crm/CustomerForm";
 
 const AppRoutes = () => (
     <Routes>
-        <Route path="form" element={<CustomerForm/>}/>
+        <Route path="customer" element={<CustomerForm/>}/>
         <Route path="customers" element={<Customers/>}/>
                 <Route path="/customers/details/:id" element={<CustomerDetails />} />
                 <Route path="/customers/insert" element={<CustomerInsert />} />
