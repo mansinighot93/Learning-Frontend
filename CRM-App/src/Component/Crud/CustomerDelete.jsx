@@ -16,8 +16,8 @@ const CustomerDelete = () => {
   return (
     <div>
       <h2>Are you sure you want to delete this customer?</h2>
-      <button onClick={handleDelete}>Yes, Delete</button>
-      <button onClick={() => navigate('/')}>No, Cancel</button>
+      <button onClick={handleDelete}>Yes</button>
+      <button onClick={() => navigate('/')}>No</button>
     </div>
   );
 };

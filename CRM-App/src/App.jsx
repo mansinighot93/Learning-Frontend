@@ -10,11 +10,8 @@ const App = () => {
     <CustomerProvider>
       <Router>
         <AppRoutes />
-
       </Router>
-
     </CustomerProvider>
-
   );
 };
 

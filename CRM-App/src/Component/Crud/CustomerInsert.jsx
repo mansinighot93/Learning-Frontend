@@ -19,46 +19,43 @@ const CustomerInsert = () => {
   };
 
   return (
-    <Card style={{ width: '30rem', margin: '20px auto' }}>
+    <Card style={{ width: '20rem', margin: '20px auto' }}>
       <Card.Body>
-        <Card.Title>Insert New Customer</Card.Title>
+        <Card.Title>Insert New Customer</Card.Title><br>
+        </br>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
-            <Form.Label>First Name</Form.Label>
+            <Form.Label>First Name:- </Form.Label>
             <Form.Control 
               type="text" 
               name="firstName" 
-              placeholder="First Name" 
               value={customer.firstName} 
               onChange={handleChange} 
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Last Name</Form.Label>
+            <Form.Label>Last Name:- </Form.Label>
             <Form.Control 
               type="text" 
-              name="lastName" 
-              placeholder="Last Name" 
+              name="lastName"  
               value={customer.lastName} 
               onChange={handleChange} 
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Email</Form.Label>
+            <Form.Label>Email:- </Form.Label>
             <Form.Control 
               type="email" 
-              name="email" 
-              placeholder="Email" 
+              name="email"
               value={customer.email} 
               onChange={handleChange} 
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Contact Number</Form.Label>
+            <Form.Label>Contact Number:- </Form.Label>
             <Form.Control 
               type="text" 
               name="contactnumber" 
-              placeholder="Contact Number" 
               value={customer.contactnumber} 
               onChange={handleChange} 
             />

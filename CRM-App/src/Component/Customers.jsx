@@ -8,7 +8,7 @@ const Customers = () => {
 
   return (
     <div>
-      <h1>Transflower Customers</h1>
+      <h1>Customer's Information</h1>
       <Link to="/insert">Insert New Customer</Link>
       <ul>
         {customers.map(customer => (
