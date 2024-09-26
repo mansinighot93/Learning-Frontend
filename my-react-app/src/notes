@@ -1,0 +1,15 @@
+Routing: Single page Application (SPA)
+Routing:
+	UI Routing / UI navigation
+Steps for implementing SPA using React Router DOM
+1.Add package react-router-dom to package.json
+2.Add components to react application (home, about, contact, services,
+				       list, details, counter,
+				       login, register)
+3.Add Navbar to define links for SPA
+4.Add Routes for SPA 
+5.Associate  components with links in route.jsx
+6.Add container component
+7.Link navbar and  approutes in side container.
+8.Add Container as child component to App component
+9.Run React Application
