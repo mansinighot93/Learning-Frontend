@@ -14,7 +14,6 @@ function NavigationEx() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Customer</Nav.Link>
-            <Nav.Link as={Link} to="/ProductContainer">Product</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
