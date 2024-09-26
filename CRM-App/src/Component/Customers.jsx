@@ -13,7 +13,7 @@ const Customers = () => {
       <ul>
         {customers.map(customer => (
           <li key={customer.id}>Customer=
-            {customer.firstName} {customer.lastName}||
+            {customer.firstName} {customer.lastName}| |
             <Link to={`/customers/${customer.id}`}>Details</Link> | |
             <Link to={`/update/${customer.id}`}>Update</Link> | |
             <Link to={`/delete/${customer.id}`}>Delete</Link>

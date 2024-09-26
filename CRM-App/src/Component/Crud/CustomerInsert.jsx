@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { CustomerContext } from '../Context/CustomerContext';
 import { useNavigate } from 'react-router-dom';
-import { Card, Form, Button } from 'react-bootstrap';
 
 const CustomerInsert = () => {
   const { addCustomer } = useContext(CustomerContext);
@@ -19,53 +18,52 @@ const CustomerInsert = () => {
   };
 
   return (
-    <Card style={{ width: '20rem', margin: '20px auto' }}>
-      <Card.Body>
-        <Card.Title>Insert New Customer</Card.Title><br>
-        </br>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3">
-            <Form.Label>First Name:- </Form.Label>
-            <Form.Control 
-              type="text" 
-              name="firstName" 
-              value={customer.firstName} 
-              onChange={handleChange} 
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Last Name:- </Form.Label>
-            <Form.Control 
-              type="text" 
-              name="lastName"  
-              value={customer.lastName} 
-              onChange={handleChange} 
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Email:- </Form.Label>
-            <Form.Control 
-              type="email" 
-              name="email"
-              value={customer.email} 
-              onChange={handleChange} 
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Contact Number:- </Form.Label>
-            <Form.Control 
-              type="text" 
-              name="contactnumber" 
-              value={customer.contactnumber} 
-              onChange={handleChange} 
-            />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Insert
-          </Button>
-        </Form>
-      </Card.Body>
-    </Card>
+    <div>
+      <h2>Insert New Customer</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>First Name:</label>
+          <input 
+            type="text" 
+            name="firstName" 
+            value={customer.firstName} 
+            onChange={handleChange} 
+            required 
+          />
+        </div>
+        <div>
+          <label>Last Name:</label>
+          <input 
+            type="text" 
+            name="lastName"  
+            value={customer.lastName} 
+            onChange={handleChange} 
+            required 
+          />
+        </div>
+        <div>
+          <label>Email:</label>
+          <input 
+            type="email" 
+            name="email"
+            value={customer.email} 
+            onChange={handleChange} 
+            required 
+          />
+        </div>
+        <div>
+          <label>Contact Number:</label>
+          <input 
+            type="text" 
+            name="contactnumber" 
+            value={customer.contactnumber} 
+            onChange={handleChange} 
+            required 
+          />
+        </div>
+        <button type="submit">Insert</button>
+      </form>
+    </div>
   );
 };
 
