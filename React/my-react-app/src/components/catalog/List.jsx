@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Details from './Details';
 import ProductService from '../../services/productservice';
 
