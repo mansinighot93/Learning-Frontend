@@ -1,17 +1,28 @@
 //React component : function component
-/*import { useState, useEffect } from "react";
-const Counter =()=>{
-  
-  const[count, setCount]=useState(0);
+//React component : function component
+import { useState, useEffect } from "react";
+const Counter =({likes})=>{
+ 
+    console.log( " Counter component initialization");
+ 
+    const[count, setCount]=useState(likes);
  
     //event handlers
     const increment=()=>{
         setCount(count+1);
+        console.log( "increment method inoked..");
     }
  
     const decrement=()=>{
         setCount(count-1);
+        console.log( "increment method inoked..");
     }
+ 
+    useEffect(()=>{
+        console.log("Effect is called....");
+    },[])
+ 
+ 
     return (
             <>
                 <button onClick={decrement}>-</button>
@@ -21,8 +32,9 @@ const Counter =()=>{
     );
 }
 export default Counter;
-*/
+ 
 
+/*
 //Class Component
 import { Component } from "react";
 class Counter extends Component{
@@ -73,3 +85,4 @@ class Counter extends Component{
  
 }
 export default Counter;
+*/

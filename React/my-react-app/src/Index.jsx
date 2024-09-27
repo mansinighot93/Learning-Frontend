@@ -7,14 +7,16 @@
 import Counter from "./components/catalog/Counter";
 
 function Index(){
-    return (
+    var result=5600;
+    return(
+        <>
         <div>
-            <h2>TransFlower Learning Pvt.Ltd</h2>
+            <p>Welcome To Transflower</p>
+            <Counter likes={result}/>
             <hr/>
-            
             <Counter/>
-        </div>
-    );
+        </div></>
+    )
 }
 export default Index;
 //<List/>
