@@ -1,18 +1,21 @@
 import React from 'react';
-import { CustomerProvider } from '../Context/CustomerContext';
+import { useSelector } from 'react-redux';
 import Customer from './Customer';
 
 function CustomerContainer() {
   
-  const users=customerservice.getAll();
+  const customers= useSelector((state)=>state.customer.customers);
 
   return (
-   
-    <CustomerProvider>
       <div>
-        <Customer />
+        {customers.length > 0 ? (
+          customers.map((customer)=>(
+            <Customer key={customer.id} customer={customer}/>
+          ))
+        ) :(
+          <p>No Customers Available</p>
+        )}
       </div>
-    </CustomerProvider>
   );
 }
 

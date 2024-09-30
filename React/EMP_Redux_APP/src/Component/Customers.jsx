@@ -1,10 +1,10 @@
 // src/components/Customers.jsx
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { CustomerContext } from './Context/CustomerContext';
+import { useSelector } from 'react-redux';
 
 const Customers = () => {
-  const { customers } = useContext(CustomerContext);
+  const customers = useSelector((state)=>state.customer.customers);
 
   return (
     <div>
@@ -12,7 +12,7 @@ const Customers = () => {
       <Link to="/insert">Insert New Customer</Link>
       <ul>
         {customers.map(customer => (
-          <li key={customer.id}>Customer=
+          <li key={customer.id}>Customer :- 
             {customer.firstName} {customer.lastName}| |
             <Link to={`/customers/${customer.id}`}>Details</Link> | |
             <Link to={`/update/${customer.id}`}>Update</Link> | |

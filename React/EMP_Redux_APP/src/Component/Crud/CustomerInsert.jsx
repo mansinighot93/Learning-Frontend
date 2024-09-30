@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
-import { CustomerContext } from '../Context/CustomerContext';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { addCustomer } from '../../redux/CustomerAction';
 
 const CustomerInsert = () => {
-  const { addCustomer } = useContext(CustomerContext);
+  const dispatch = useDispatch();
   const [customer, setCustomer] = useState({ firstName: '', lastName: '', email: '', contactnumber: '' });
   const navigate = useNavigate();
 
@@ -13,7 +14,7 @@ const CustomerInsert = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addCustomer({ ...customer, id: Date.now() });
+    dispatch(addCustomer({ ...customer, id: Date.now() }));
     navigate('/');
   };
 

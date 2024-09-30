@@ -1,5 +1,5 @@
 import { legacy_createStore as createStore} from "redux";
-import EmployeeReducers from "./EmpReducer";
+import CustomerReducer from "./CustomerReducer";
 
-const store=createStore(EmployeeReducers);
+const store=createStore(CustomerReducer);
 export default store;

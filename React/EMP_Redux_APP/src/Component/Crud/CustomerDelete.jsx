@@ -1,15 +1,15 @@
 // src/components/CustomerDelete.jsx
-import React, { useContext } from 'react';
-import { CustomerContext } from '../Context/CustomerContext';
+import { deleteCustomer } from '../../redux/CustomerAction';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const CustomerDelete = () => {
-  const { deleteCustomer } = useContext(CustomerContext);
-  const { id } = useParams();
-  const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    const navigate = useNavigate();
 
   const handleDelete = () => {
-    deleteCustomer(parseInt(id));
+    dispatch(deleteCustomer(parseInt(id)));
     navigate('/');
   };
 

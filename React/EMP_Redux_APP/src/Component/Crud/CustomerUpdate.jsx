@@ -1,12 +1,14 @@
 // src/components/CustomerUpdate.jsx
-import React, { useContext, useState, useEffect } from 'react';
-import { CustomerContext } from '../Context/CustomerContext';
+import React, { useState, useEffect } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { updateCustomer } from '../../redux/CustomerAction';
 
 const CustomerUpdate = () => {
-  const { updateCustomer, customers } = useContext(CustomerContext);
+  const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
+  const customers = useSelector((state)=>state.customer.customers);
   const [customer, setCustomer] = useState({});
 
   useEffect(() => {
@@ -20,7 +22,7 @@ const CustomerUpdate = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateCustomer(customer);
+    dispatch(updateCustomer(customer));
     navigate('/');
   };
 
