@@ -20,7 +20,7 @@ const Counter =({likes})=>{
  
     useEffect(()=>{
         console.log("Effect is called....");
-    },[])
+    },[count])
  
  
     return (
