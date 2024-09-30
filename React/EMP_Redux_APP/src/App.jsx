@@ -1,16 +1,18 @@
 import './App.css';
-import EmployeeForm from './components/EmpForm';
-import EmployeeList from './components/EmpList';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { CustomerProvider } from './Component/Context/CustomerContext';
+import AppRoutes from './Component/Routes/AppRoutes';
 
-function App() {
 
+const App = () => {
   return (
-    <div>
-      <h1>Employee Management System</h1>
-      <EmployeeForm/>
-      <EmployeeList/>
-    </div>
-  )
-}
+    <CustomerProvider>
+      <Router>
+        <AppRoutes />
+      </Router>
+    </CustomerProvider>
+  );
+};
 
 export default App;

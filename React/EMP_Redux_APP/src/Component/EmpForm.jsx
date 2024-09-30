@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
-import { addEmployee } from '../actions/EmpAction';
+import { addEmployee, updateEmployee} from '../redux/EmpAction';
 
 const EmployeeForm = () => {
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const EmployeeForm = () => {
     return(
         <form onSubmit={handleSubmit}>
             <label>ID:-</label>
-            <input type="text" value={id} onChange={(e)=>setId(e.target.value)} required/>
+            <input type="number" value={id} onChange={(e)=>setId(e.target.value)} required/>
             <br/>
             <label>First Name:-</label>
             <input type="text" value={firstname} onChange={(e)=>setFirstname(e.target.value)} required/>
@@ -28,7 +28,9 @@ const EmployeeForm = () => {
             <label>Last Name:-</label>
             <input type="text" value={lastname} onChange={(e)=>setLastname(e.target.value)} required/>
             <br/>
-            <button>Submit</button>
+            <button onClick={()=>dispatch(addEmployee())}>ADD</button>
+            <button onClick={()=>dispatch(updateEmployee())}>UPDATE</button>
+            
         </form>
     )
 };

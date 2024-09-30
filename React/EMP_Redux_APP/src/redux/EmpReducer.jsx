@@ -1,4 +1,4 @@
-import { ADD_EMPLOYEE, UPDATE_EMPLOYEE,DELETE_EMPLOYEE } from "../actions/EmpAction";
+import { ADD_EMPLOYEE, UPDATE_EMPLOYEE,DELETE_EMPLOYEE } from "./EmpAction";
 
 const initialState = {
     employee : [],
@@ -20,8 +20,9 @@ const EmployeeReducers = (state = initialState,action) => {
       case DELETE_EMPLOYEE:
         return {
             ...state,
-            employees: state.employee.filter((e) => e.id !== action.payload),
+            employee: state.employee.filter((e) => e.id !== action.payload),
         };
+
         default:
         return state;
 
