@@ -16,13 +16,13 @@ const Customers = () => {
 
   return (
     <div>
-      <h1>Customer's Information</h1>
+      <h2>Customer's Information Using Redux Architecture</h2>
       <Link to="/insert">Insert New Customer</Link>
       <ul>
         {customers.map(customer => (
-          <li key={customer.id}>Customer :- 
-            {customer.firstName} {customer.lastName}| |
-            <Link to={`/customers/${customer.id}`}>Details</Link> | |
+          <li key={customer.id}>
+            Customer :- {customer.firstName} {customer.lastName}
+             <Link to={`/customers/${customer.id}`}>Details</Link> | |
             <Link to={`/update/${customer.id}`}>Update</Link> | |
             <Link to={`/delete/${customer.id}`}>Delete</Link>
           </li>
