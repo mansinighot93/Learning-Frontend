@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Customer = () => {
-  const customers  = useSelector((state) => state.customer.customers);
+  const customer  = useSelector((state) => state.customer.customers.find((c)=>c.id===parseInt(id)));
   const { id } = useParams();
-  const customer = customers.find(c => c.id === parseInt(id));
+
 
   if (!customer) {
     return <h2>Customer not found</h2>;

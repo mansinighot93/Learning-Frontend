@@ -15,20 +15,20 @@ export const setCustomers = () => {
 export const addCustomer = (customer) => {
     return (dispatch) => {
         CustomerService.addCustomer(customer);
-        dispatch(setCustomers());
+        dispatch({ type: ADD_CUSTOMERS, payload: customer });
     };
 };
   
 export const updateCustomer = (customer) => {
     return (dispatch) => {
         CustomerService.updateCustomer(customer);
-        dispatch(setCustomers());
+        dispatch({ type: UPDATE_CUSTOMERS, payload: customer });
     };
 };
   
 export const deleteCustomer = (id) => {
     return (dispatch) => {
         CustomerService.deleteCustomer(id);
-        dispatch(setCustomers());
+        dispatch({ type: DELETE_CUSTOMER, payload: id });
     };
 };

@@ -1,10 +1,18 @@
 // src/components/Customers.jsx
-import React, { useContext } from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { setCustomers } from '../redux/CustomerAction';
 
 const Customers = () => {
+  const dispatch = useDispatch();
   const customers = useSelector((state)=>state.customer.customers);
+
+  useEffect(() => {
+    if (customers.length === 0) {
+      dispatch(setCustomers());
+    }
+  }, [dispatch, customers.length]);
 
   return (
     <div>

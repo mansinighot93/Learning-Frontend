@@ -14,7 +14,8 @@ const CustomerInsert = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addCustomer({ ...customer, id: Date.now() }));
+    const newCustomer = { ...customer,id: Date.now()}
+    dispatch(addCustomer(newCustomer));
     navigate('/');
   };
 

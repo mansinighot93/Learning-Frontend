@@ -9,12 +9,17 @@ const CustomerUpdate = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const customers = useSelector((state)=>state.customer.customers);
-  const [customer, setCustomer] = useState({});
+  const [customer, setCustomer] = useState({firstName: '', lastName: '', email: '', contactnumber: '' });
 
   useEffect(() => {
     const existingCustomer = customers.find(c => c.id === parseInt(id));
-    setCustomer(existingCustomer || {});
-  }, [id, customers]);
+    if(existingCustomer){
+      setCustomer(existingCustomer || {});
+    }
+    else{
+      navigate('/');
+    }
+  }, [id, customers,navigate]);
 
   const handleChange = (e) => {
     setCustomer({ ...customer, [e.target.name]: e.target.value });
