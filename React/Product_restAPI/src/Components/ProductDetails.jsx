@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchProducts } from '../Redux/ProductAction';
+import { fetchProduct } from '../Redux/ProductAction';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -16,7 +16,7 @@ const ProductDetails = () => {
 
     useEffect(() => {
         if (!product) {
-            dispatch(fetchProducts(parseInt(id)));
+            dispatch(fetchProduct(parseInt(id)));
         }
     }, [dispatch, id, product]);
 

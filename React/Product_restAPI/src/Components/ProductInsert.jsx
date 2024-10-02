@@ -6,13 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const ProductInsert = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [product, setProduct] = useState({
-        title: '',
-        description: '',
-        unitPrice:'' ,
-        quantity: '',
-        likes: ''
-    });
+    const [product, setProduct] = useState({title: '',description: '',unitPrice:'' ,quantity: '', likes: ''});
 
     const handleSubmit = (e) => {
         e.preventDefault();

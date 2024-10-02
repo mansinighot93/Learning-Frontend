@@ -25,7 +25,7 @@ class ProductServicesFetch {
     }
 
     // Create a new product
-    async addProduct(product) {
+    async createProduct(product) {
         const response = await fetch(this.apiBaseUrl, {
             method: 'POST',
             headers: {
