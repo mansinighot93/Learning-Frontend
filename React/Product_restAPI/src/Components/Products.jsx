@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import ProductServicesFetch from "../Services/ProductServicesFetch";
 const Products=()=>{
 
@@ -22,11 +23,16 @@ const Products=()=>{
 
     return(
         <>
-             <h1>Todays Fresh Flowers</h1>
+             <h3>Todays Fresh Flowers</h3>
+             <Link to="/insert">Insert New Product</Link>
         <ul>
             {
                 products.map(product => (
-                <li key={product.id}>Title:-{product.title} , UnitPrice:-{product.unitprice} , Quantity:- {product.quantity} , Description:- {product.description} , Likes:- {product.likes}</li>
+                <li key={product.id}>Title:-{product.title} , UnitPrice:-{product.unitprice} , Quantity:- {product.quantity} , Description:- {product.description} , Likes:- {product.likes}
+                <Link to={`/details/${product.id}`}> Details</Link> | |
+                <Link to={`/delete/${product.id}`}> Delete</Link> | |
+                <Link to={`/update/${product.id}`}> Update</Link> 
+                </li>
             ))}
         </ul>
         </>

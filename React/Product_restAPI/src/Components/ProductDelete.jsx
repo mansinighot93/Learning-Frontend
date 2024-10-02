@@ -1,50 +1,28 @@
+// src/components/DeleteProduct.jsx
 
-import React, { useEffect, useState } from 'react';
-import { useDispatch} from 'react-redux';
-import { deleteProduct} from '../../redux/ProductAction';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import {getProductById,deleteProduct} from "../Services/ProductServicesFetch";
+import {deleteProduct} from '../Redux/ProductAction';
 
 const ProductDelete = () => {
-  const dispatch = useDispatch();
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [product, setProduct] = useState(null);
-  const [error, setError] = useState(null);
+    const { id } = useParams();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const data = await getProductById(id);
-        setProduct(data);
-      } catch (error) {
-        setError(errerror.message);
-      }
+    const handleDelete = () => {
+        dispatch(deleteProduct(parseInt(id)));
+        navigate('/');
     };
-    fetchProduct();
-  },[id]);
 
-  const handleDelete = () => {
-    if (product) {
-      dispatch(deleteProduct(product.id));
-      navigate('/');
-    } else {
-      alert('Product Not Found.');
-      navigate('/');
-    }
-  };
-  if (error) {
-    return <h2>{error}</h2>;
-  }
-  
-
-  return (
-    <div>
-      <h2>Are you sure you want to delete {customer.firstName} {customer.lastName}?</h2>
-      <button onClick={handleDelete}>Yes</button>
-      <button onClick={() => navigate('/')}>No</button>
-    </div>
-  );
+    return (
+        <div>
+            <h2>Delete Product</h2>
+            <p>Are you sure you want to delete this product?</p>
+            <button onClick={handleDelete}>Yes, Delete</button>
+            <button onClick={() => navigate('/')}>No, Go Back</button>
+        </div>
+    );
 };
 
 export default ProductDelete;

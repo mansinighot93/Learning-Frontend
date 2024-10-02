@@ -1,34 +1,41 @@
-import { SET_PRODUCTS,ADD_PRODUCTS,UPDATE_PRODUCTS,DELETE_PRODUCTS } from "./ProductAction";
+import { FETCH_PRODUCT,FETCH_PRODUCTS,CREATE_PRODUCT,UPDATE_PRODUCT,DELETE_PRODUCT } from '../Redux/ProductAction';
 
 const initialState = {
     products: [],
+    product: null,
 };
 
-const ProductReducers = (state = initialState,action) => {
-    switch(action.type){
-
-        case SET_PRODUCTS:
-            return { ...state, products: action.payload };
-        
-        case ADD_PRODUCTS:
-            return { ...state, products: [...state.products, action.payload] };
-
-        case UPDATE_PRODUCTS:
+export const ProductReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case FETCH_PRODUCTS:
             return {
                 ...state,
-                products: state.products.map((product) =>
-                product.id === action.payload.id ? action.payload : product
-                ),
+                products: action.payload
             };
-
-        case DELETE_PRODUCTS:
+        case FETCH_PRODUCT:
             return {
                 ...state,
-                products: state.products.filter((product) => product.id !== action.payload),
+                product: action.payload
             };
-
+        case CREATE_PRODUCT:
+            return {
+                ...state,
+                products: [...state.products, action.payload]
+            };
+        case UPDATE_PRODUCT:
+            return {
+                ...state,
+                products: state.products.map(product =>
+                    product.id === action.payload.id ? action.payload : product
+                )
+            };
+        case DELETE_PRODUCT:
+            return {
+                ...state,
+                products: state.products.filter(product => product.id !== action.payload)
+            };
         default:
             return state;
     }
 };
-export default ProductReducers;
+export default ProductReducer;

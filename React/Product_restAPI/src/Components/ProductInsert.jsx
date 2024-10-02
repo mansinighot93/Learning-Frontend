@@ -1,59 +1,60 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { createProduct } from '../Redux/ProductAction';
 import { useNavigate } from 'react-router-dom';
-import { addProduct as addProductAction } from '../Redux/ProductAction';
-import { addProduct } from '../Services/ProductServicesFetch';
 
 const ProductInsert = () => {
-  const dispatch = useDispatch();
-  const [product, setProduct] = useState({ title: '', unitprice: '', quantity: '', description: '', likes: '' });
-  const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [product, setProduct] = useState({
+        title: '',
+        description: '',
+        unitPrice:'' ,
+        quantity: '',
+        likes: ''
+    });
 
-  const handleChange = (e) => {
-    setProduct({ ...product, [e.target.name]: e.target.value });
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(createProduct(product));
+        setProduct({ title: '', description: '', unitPrice: '', quantity: '', likes: '' });
+        navigate('/');
+    };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const newProduct = { ...product, id: Date.now() };
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setProduct({
+            ...product,
+            [name]: name === 'unitPrice' || name === 'quantity' || name === 'likes' ? parseFloat(value) : value
+        });
+    };
 
-    try {
-      const response = await addProduct(newProduct);
-      dispatch(addProductAction(response));
-      navigate('/');
-    } catch (error) {
-      alert('Failed to add product: ' + error.message); 
-    }
-  };
-
-  return (
-    <div>
-      <h2>Insert New Product</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title:</label>
-          <input type="text" name="title" value={product.title} onChange={handleChange} required />
-        </div>
-        <div>
-          <label>Description:</label>
-          <input type="text" name="description" value={product.description} onChange={handleChange} required />
-        </div>
-        <div>
-          <label>Unit Price:</label>
-          <input type="number" name="unitprice" value={product.unitprice} onChange={handleChange} required />
-        </div>
-        <div>
-          <label>Quantity:</label>
-          <input type="number" name="quantity" value={product.quantity} onChange={handleChange} required />
-        </div>
-        <div>
-          <label>Likes:</label>
-          <input type="number" name="likes" value={product.likes} onChange={handleChange} required />
-        </div>
-        <button type="submit">Insert</button>
-      </form>
-    </div>
-  );
+    return (
+        <form onSubmit={handleSubmit}>
+            <h2>Insert Product</h2>
+            <div>
+                <label>Title:</label>
+                 <input type="text" name="title" value={product.title} onChange={handleChange} />
+            </div>
+            <div>
+                <label>Description:</label> 
+                <input name="description" value={product.description} onChange={handleChange} />
+            </div>
+            <div>
+                <label>Unit Price:</label>
+                 <input type="number" name="unitPrice" value={product.unitPrice} onChange={handleChange} />
+            </div>
+            <div>
+                <label>Quantity:</label>
+                <input type="number" name="quantity" value={product.quantity} onChange={handleChange} />
+            </div>
+            <div>
+                <label>Likes:</label>
+                <input type="number" name="likes" value={product.likes} onChange={handleChange} />
+            </div>
+            <button type="submit">Add Product</button>
+        </form>
+    );
 };
 
 export default ProductInsert;
