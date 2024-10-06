@@ -1,11 +1,12 @@
-import './App.css'
-import Register from './Component/Membership/Register'
-import Login from './Component/Membership/Login'
+import Register from './Component/Membership/Register';
+import Login from './Component/Membership/Login';
+import List from './Component/List';
 
 function App() {
 
   return (
     <div>
+      <List/>
       <hr/>
       <Register/>
       <hr/>
@@ -13,5 +14,4 @@ function App() {
     </div>
   )
 }
-
-export default App
+export default App;
