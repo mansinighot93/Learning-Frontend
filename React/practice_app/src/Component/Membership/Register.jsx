@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Services from "../../Services/Services";
 const Register=()=>{
     const [firstname,setFirstname]=useState('');
     const [lastname,setLastname]=useState('');
@@ -13,6 +14,24 @@ const Register=()=>{
             setMessage("Please Fill in the required fileds..");
             return;
         }
+        const newUser={
+            firstname,
+            lastname,
+            contactnumber,
+            email,
+            Password
+        };
+        Services.register(newUser).then(response=>{
+            if(response.success){
+                setMessage("Registration Successful..");
+            }
+            else{
+                setMessage("Registration Failed...");
+            }
+        })
+        .catch(() => {
+            setMessage("Registration Failed Please Try Again...");
+        });
         console.log('First Name: ' + firstname + ' , Last Name: ' + lastname + ', Email ID: ' + email + ' , Password: ' + Password );
     }
     return(

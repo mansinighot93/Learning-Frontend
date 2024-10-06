@@ -6,6 +6,14 @@ const Services ={
             return false;
         }
         return true;
+    },
+
+    getAllUsers (){
+        return users;
+    },
+
+    register (theUser){
+        users.push(theUser)
     }
 }
 export default Services;
