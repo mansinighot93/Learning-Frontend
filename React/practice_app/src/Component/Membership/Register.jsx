@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Services from "../../Services/Services";
 const Register=()=>{
     const [firstname,setFirstname]=useState('');
@@ -37,13 +38,13 @@ const Register=()=>{
     return(
         <div>
             <h2>Membership Form</h2>
-            <form>
-                <label>First Name:-</label><input type="text" name="fisrtname" value={firstname} onChange={(e)=>setFirstname(e.target.value)} /><br/>
+            <form onSubmit={onRegister}>
+                <label>First Name:-</label><input type="text" name="firstname" value={firstname} onChange={(e)=>setFirstname(e.target.value)} /><br/>
                 <label>Last Name:-</label><input type="text" name="lastname" value={lastname} onChange={(e)=>setLastname(e.target.value)}/><br/>
                 <label>Email ID:-</label><input type="email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/><br/>
-                <label>Conatct Number:-</label><input type="number" name="contactnumber" value={contactnumber} onChange={(e)=>setContactnumber(e.target.value)}/><br/>
+                <label>Conatct Number:-</label><input type="tel" name="contactnumber" value={contactnumber} onChange={(e)=>setContactnumber(e.target.value)}/><br/>
                 <label>Password:-</label><input type="password" name="password" value={Password} onChange={(e)=>setPassword(e.target.value)}/><br/>
-                <button onClick={onRegister}>Register</button>
+                <button type='submit'>Register</button>
             </form>
             {message && <p> {message} </p>}
         </div>

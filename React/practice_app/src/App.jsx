@@ -10,8 +10,9 @@ function App() {
       <hr/>
       <Register/>
       <hr/>
-      <Login/>
+  
     </div>
   )
 }
 export default App;
+//  <Login/>

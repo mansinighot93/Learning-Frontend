@@ -12,10 +12,10 @@ const Login=()=>{
             console.log(email,password);
             status=Services.validate(email,password);
             if(status === true){
-                console.log("Login Successful...")
+                setMessage("Login Successful...")
             }
             else{
-                console.log("Login failed...");
+                setMessage("Login failed...");
             }
         }
         catch(error){
