@@ -1,8 +1,8 @@
-const users = [ {firstname:'Manasi',lastname:'Nighot',email:'mansi.nighot@gmail.com',password:'1234'},
-                {firstname:'Soahm',lastname:'Nighot',email:'soham.nighot@gmail.com',password:'1234'},
-                {firstname:'Sanika',lastname:'Nighot',email:'sanika.nighot@gmail.com',password:'1234'},
-                {firstname:'Yash',lastname:'Nighot',email:'yash.nighot@gmail.com',password:'1234'},
-                {firstname:'Om',lastname:'Nighot',email:'om.nighot@gmail.com',password:'1234'}];
+const users = [ {firstname:'Manasi',middlename:'Sudarshan',lastname:'Nighot',contactnumber:'9561128566',occupation:'student',email:'mansi.nighot@gmail.com',password:'1234'},
+                {firstname:'Soahm',middlename:'Sudarshan',lastname:'Nighot',contactnumber:'9561128566',occupation:'student',email:'soham.nighot@gmail.com',password:'1234'},
+                {firstname:'Sanika',middlename:'Sudarshan',lastname:'Nighot',contactnumber:'9561128566',occupation:'student',email:'sanika.nighot@gmail.com',password:'1234'},
+                {firstname:'Yash',middlename:'Subhash',lastname:'Nighot',contactnumber:'9561128566',occupation:'student',email:'yash.nighot@gmail.com',password:'1234'},
+                {firstname:'Om',middlename:'Subhash',lastname:'Nighot',contactnumber:'9561128566',occupation:'student',email:'om.nighot@gmail.com',password:'1234'}];
                 
 const Services ={
     validate(email,password){

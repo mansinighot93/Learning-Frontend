@@ -4,15 +4,18 @@ const List = ()=>{
     const display=Services.getAllUsers();
         return(
         <div>
-            <h3>All Customer List</h3>
+            <h3>Students Details</h3>
             <table border='2'>
                 <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email ID</th>
-                <th>Contact Number</th>
-                <th>Password</th>
+                    <th>First Name</th>
                 </tr>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Contact Number</th>
+                <th>Occupation</th>
+                <th>Email ID</th>
+                <th>Password</th>
+                
                 <tr>
                     {
                         display.map((list)=>(

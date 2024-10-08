@@ -32,7 +32,7 @@ const Login=()=>{
 
     return(
         <div>
-            <h2>Are You Member?</h2>
+            <h2>Already have your Account?</h2>
             <form>
                 <label>Email ID:-</label><input type="email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} /><br/>
                 <label>Password:-</label><input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} /><br/>
