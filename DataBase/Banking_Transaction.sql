@@ -10,10 +10,13 @@ BEGIN
     -- SELECT amount INTO accountid FROM accounts WHERE accountid = sp_accountid;
     UPDATE accounts SET balance = balance + sp_amount
     WHERE accountid = sp_toaccountid;
+    
     INSERT into operations(accountid, date_time, amount, oper_type)values
     (sp_toaccountid, NOW(), sp_amount, 'D');
+
     UPDATE accounts SET balance = balance - sp_amount
     WHERE accountid = sp_fromaccountid;
+
     INSERT into operations(accountid, date_time, amount, oper_type)values
     (sp_fromaccountid, NOW(), sp_amount, 'W'); 
     COMMIT;

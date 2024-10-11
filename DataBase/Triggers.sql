@@ -38,3 +38,5 @@ INSERT INTO employees (name, department) VALUES ('Manasi Nighot', 'BOD');
 UPDATE employees SET department='training' WHERE id=3;
  
 SELECT * FROM employees;
+
+
