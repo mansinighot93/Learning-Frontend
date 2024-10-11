@@ -33,6 +33,15 @@ CREATE TABLE inventory_trigger (
     stock_quantity INT
 );
 
+CREATE TABLE payment_trigger(
+   payment_id INT AUTO_INCREMENT PRIMARY KEY,
+   order_id INT,
+   payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   payment_amount DECIMAL(10,2),
+   payment_status ENUM('pending','completed'),
+   FOREIGN KEY (order_id) REFERENCES order_trigger(order_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
 -- Create Trigger
 DELIMITER $$
 CREATE TRIGGER after_order_insert
@@ -66,4 +75,24 @@ values(2, 5, NOW(), 'pending');
 
 -- Trigger Execution
 select * from inventory_trigger;
+select * from order_trigger;
+
+-- Create Trigger For Payment 
+DELIMITER $$
+CREATE TRIGGER after_payment_insert
+AFTER INSERT ON payment_trigger
+FOR EACH ROW
+BEGIN
+	IF NEW.payment_status='completed' THEN
+		UPDATE order_trigger SET status='completed' WHERE order_id=NEW.order_id;
+	ELSE
+		SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT= 'PENDING STATUS';
+	END IF;
+END $$
+
+DELIMITER ;
+
+-- Trigger Execution
+INSERT INTO payment_trigger(order_id,payment_date,payment_amount,payment_status) VALUES(1,NOW(),500,'completed');
 select * from order_trigger;
