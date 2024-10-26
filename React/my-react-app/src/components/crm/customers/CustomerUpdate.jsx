@@ -15,7 +15,7 @@ const CustomerUpdate = () => {
         if (existingCustomer) {
             setCustomer(existingCustomer);
         } else {
-            setError('Customer with ID ${id} not found.');
+            setError(`Customer with ID ${id} not found.`);
         }
     }, [id]);
 

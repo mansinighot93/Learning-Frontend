@@ -2,9 +2,9 @@
 //import Register from "./components/Register";
 //import List from "./components/List";
 //import Counter from "./components/Counter";
-//import Container from "./components/Container";
+import Container from "./components/Container";
 //import App from "./App";
-import Counter from "./components/catalog/Counter";
+//import Counter from "./components/catalog/Counter";
 
 function Index(){
     var result=5600;
@@ -12,9 +12,7 @@ function Index(){
         <>
         <div>
             <p>Welcome To Transflower</p>
-            <Counter likes={result}/>
-            <hr/>
-            <Counter/>
+            <Container/>
         </div></>
     )
 }
@@ -23,4 +21,6 @@ export default Index;
 //<Login/>
 //<Counter/>
 //<Register/>
-//<Container/>
+//<Container/><Counter likes={result}/>
+            //<hr/>
+            //<Counter/>

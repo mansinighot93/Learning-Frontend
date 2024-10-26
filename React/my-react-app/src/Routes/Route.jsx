@@ -19,7 +19,7 @@ import CustomerDetails from "../components/crm/customers/CustomerDetails";
 import CustomerDelete from "../components/crm/customers/CustomerDelete";
 import CustomerInsert from "../components/crm/customers/CustomerInsert";
 import CustomerUpdate from "../components/crm/customers/CustomerUpdate";
-import Storage from "../components/catalog/storage";
+
 
 const AppRoutes = () => (
     <Routes>
@@ -46,7 +46,6 @@ const AppRoutes = () => (
                 <Route path="/customers/update/:id" element={<CustomerUpdate />} />
                 <Route path="/customers/delete/:id" element={<CustomerDelete />} />
 
-                <Route path="/storage" element={<Storage/>}/>
     </Routes>
 );
 export default AppRoutes;

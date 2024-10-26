@@ -44,5 +44,5 @@ const AuthService = {
          users=users.filter(theUser=>theUser.id !==id);
      }
 }
- 
- export default AuthService;
+
+export default AuthService;
