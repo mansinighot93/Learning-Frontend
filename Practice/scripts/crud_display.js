@@ -27,7 +27,7 @@ const displayAllProducts=(products)=>{
     
     //get all products and fill inside list
     products.map((product)=>{
-        const node = document.createElement("li");
+        const node = document.createElement("list");
         const textnode = document.createTextNode(product.id + " : " + product.title + " : " + product.description + " : " + product.unitprice + " : " + product.stockavailable);
         node.appendChild(textnode);
         lstProducts.appendChild(node);
